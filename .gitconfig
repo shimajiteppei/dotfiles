@@ -1,0 +1,24 @@
+[core]
+        editor = vim
+        hooksPath = ~/.githooks
+
+[alias]
+        helloworld = !echo helloworld
+        ap = add -p
+        cm = commit -m
+        ch = checkout
+        b = branch
+        s = status
+	config = config --local
+        forget = update-index --skip-worktree
+        remind = update-index --no-skip-worktree
+        ls-forget = !git ls-files -v | grep ^S
+
+[user]
+        useConfigOnly = true
+
+[push]
+	autoSetupRemote = true
+
+[init]
+	defaultBranch = main

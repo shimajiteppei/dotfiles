@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+if [ -n "$(git config --global user.name)" ] || [ -n "$(git config --global user.email)" ]; then
+    echo "DO NOT SET GLOBAL GIT USER.NAME OR USER.EMAIL!";
+    exit 1;
+fi
