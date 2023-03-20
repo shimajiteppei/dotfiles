@@ -9,7 +9,7 @@
 !.githooks/*
 
 !.zshrc
-
+!.p10k.zsh
 !.navi
 !.navi/**/*
 
