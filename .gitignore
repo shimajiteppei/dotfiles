@@ -10,6 +10,9 @@
 
 !.zshrc
 
+!.navi
+!.navi/**/*
+
 !.ssh
 !.ssh/config
 !.ssh/conf.d
