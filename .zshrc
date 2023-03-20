@@ -1,3 +1,7 @@
+##
+## zinit and plugin
+##
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -25,7 +29,7 @@ zinit light-mode for \
   zdharma-continuum/history-search-multi-word \
   marlonrichert/zsh-autocomplete \
   arzzen/calc.plugin.zsh \
-  # zpm-zsh/clipboard \
+  olets/zsh-abbr \
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -33,7 +37,11 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 setopt globdots            # enable dotfile completion
 
-# History configurations
+
+##
+## history
+##
+
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=200000
@@ -43,13 +51,14 @@ setopt histignorespace      # ignore commands that start with space
 setopt histverify            # show command with history expansion to user before running it
 setopt sharehistory         # share command history data
 
-# force zsh to show the complete history
-alias history="history 0"
-
 zshaddhistory() {
     local line="${1%%$'\n'}"
-    [[ ! "$line" =~ "^(exit|cd|ls|ll|git|g|gs|code)($| )" ]]
+    [[ ! "$line" =~ "^(exit|cd|ls|code)($| )" ]]
 }
+
+##
+## env
+##
 
 export VOLTA_HOME="$HOME/.volta"
 
@@ -75,11 +84,27 @@ export NAVI_CONFIG="$HOME/.navi/config.yaml"
 # open navi with Ctrl + G
 eval "$(navi widget zsh)"
 
-# aliases
+
+##
+## alias
+##
+
+alias alias='abbr --session --quieter --force'
+abbr clear-session
+alias history="history 0"
 alias grep='grep --color=auto'
 alias ll='ls -lahF --color'
 alias cp='cp -i'
 alias mv='mv -i'
-alias rm='rm -i'
+alias rm='mv -t $HOME/.local/share/Trash/files'
 alias g='git'
-alias gs='g s'
+# https://zsh-abbr.olets.dev/commands.html#git
+alias git ap='add -p'
+alias git b='branch'
+alias git ch='checkout'
+alias git cm='commit -m'
+alias git config='config --local'
+alias git forget='update-index --skip-worktree'
+alias git ls-forget='ls-files -v | grep ^S'
+alias git remind='update-index --no-skip-worktree'
+alias git s='status'
