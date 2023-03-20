@@ -60,11 +60,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-export NAVI_PATH="$HOME/.navi/cheats"
-export NAVI_CONFIG="$HOME/.navi/config.yaml"
-# open navi with Ctrl + G
-eval "$(navi widget zsh)"
-
 path=(
   $path
   $HOME/.local/bin(N-/)
@@ -74,6 +69,11 @@ path=(
 )
 typeset -U path PATH
 export PATH
+
+export NAVI_PATH="$HOME/.navi/cheats"
+export NAVI_CONFIG="$HOME/.navi/config.yaml"
+# open navi with Ctrl + G
+eval "$(navi widget zsh)"
 
 # aliases
 alias grep='grep --color=auto'
