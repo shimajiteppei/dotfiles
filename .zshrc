@@ -53,7 +53,7 @@ setopt sharehistory         # share command history data
 
 zshaddhistory() {
     local line="${1%%$'\n'}"
-    [[ ! "$line" =~ "^(exit|cd|ls|code)($| )" ]]
+    [[ ! "$line" =~ "^(exit|code)($| )" ]]
 }
 
 ##
@@ -102,8 +102,11 @@ alias g='git'
 alias git ap='add -p'
 alias git b='branch'
 alias git ch='checkout'
+alias git clone='clone --recursive'
 alias git cm='commit -m'
 alias git config='config --local'
+alias git name='config user.name'
+alias git email='config user.email'
 alias git forget='update-index --skip-worktree'
 alias git ls-forget='ls-files -v | grep ^S'
 alias git remind='update-index --no-skip-worktree'
