@@ -10,8 +10,17 @@
 
 !.zshrc
 !.p10k.zsh
-!.navi
-!.navi/**/*
+
+!.local
+!.local/share
+!.local/share/navi
+!.local/share/navi/cheats
+!.local/share/navi/cheats/tomoesaturn__cheats
+!.local/share/navi/cheats/tomoesaturn__cheats/*.cheat
+
+!.config
+!.config/navi
+!.config/navi/config.yaml
 
 !.ssh
 !.ssh/config

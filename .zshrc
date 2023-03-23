@@ -79,8 +79,6 @@ path=(
 typeset -U path PATH
 export PATH
 
-export NAVI_PATH="$HOME/.navi/cheats"
-export NAVI_CONFIG="$HOME/.navi/config.yaml"
 # open navi with Ctrl + G
 eval "$(navi widget zsh)"
 
