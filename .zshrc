@@ -98,6 +98,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='mv -t $HOME/.local/share/Trash/files'
 alias g='git'
+alias gs='git status'
 # https://zsh-abbr.olets.dev/commands.html#git
 alias git ap='add -p'
 alias git b='branch'
