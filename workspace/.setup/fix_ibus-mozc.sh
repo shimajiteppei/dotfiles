@@ -10,7 +10,7 @@ cd $(mktemp -d)
 apt source ibus-mozc
 cd mozc-*/
 
-patch src/unix/ibus/property_handler.cc << EOF
+patch src/unix/ibus/property_handler.cc << 'EOF'
 --- src/unix/ibus/property_handler.cc.orig	2020-10-28 17:21:18.000849932 +0900
 +++ src/unix/ibus/property_handler.cc	2020-10-28 17:21:34.172696046 +0900
 @@ -80,7 +80,7 @@
