@@ -1,17 +1,19 @@
-# THIS IS EXPERIMENTAL
-# the config file schema may change at any time
-
 style:
   tag:
-    color: cyan # text color. possible values: https://bit.ly/3gloNNI
-    width_percentage: 26 # column width relative to the terminal window
-    min_width: 20 # minimum column width as number of characters
+    color: cyan
+    width_percentage: 10
   comment:
-    color: blue
-    width_percentage: 42
-    min_width: 45
+    color: green
+    width_percentage: 35
   snippet:
     color: white
+    width_percentage: 50
+
+finder:
+  command: fzf
+  overrides: --layout=reverse
+  overrides_var: --layout=reverse
 
 shell:
   command: zsh
+  finder_command: zsh

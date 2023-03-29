@@ -1,0 +1,28 @@
+% git
+
+# shallow clone
+git clone --depth=1 --recurse-submodules -b <branch_name> <repository> <clone_directory>
+
+# skip file without gitignore
+git update-index --skip-worktree <changed_files>
+
+# list skipped file
+git ls-files -v | grep ^S
+
+# unskip file without gitignore
+git update-index --no-skip-worktree <skipped_files>
+
+# init with branch name main
+git init --initial-branch main
+
+# colored graph log
+git log --graph --decorate --all --oneline
+
+# Remove commits from local repository (destroy changes)
+git reset --hard HEAD~<number_of_commits>
+
+# Remove commits from local repository (keep changes)
+git reset --soft HEAD~<number_of_commits>
+
+$ changed_files: git status --untracked-files=all -s --porcelain | awk '{print $2}'
+$ skipped_files: git ls-files -v | grep ^S | awk '{print $2}'

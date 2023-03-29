@@ -1,0 +1,39 @@
+% process
+
+# show all processes of all users
+ps aux | less
+
+# show process tree
+pstree -p | less
+
+# grep process id
+pgrep
+
+# show status of process
+sudo cat /proc/<pid>/status
+
+# show environment value of process
+sudo strings /proc/<pid>/environ
+
+# show executing file of process
+sudo readlink /proc/<pid>/exe
+
+# show working directory of process
+sudo readlink /proc/<pid>/cwd
+
+# show memory limits of process
+sudo cat /proc/<pid>/limits
+
+# !!DANGER!! force kill process
+kill -9 <pid>
+
+# get elapsed time of command
+time (<command>)
+
+# create background process
+nohup (<command>) &
+
+# change shell command to background process
+bg %<job_id>; disown %<job_id>
+
+$ pid: ps aux --- --header-lines 1 --column 2

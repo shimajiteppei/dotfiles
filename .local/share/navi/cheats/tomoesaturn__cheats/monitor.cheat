@@ -1,0 +1,23 @@
+% monitor
+
+# show hardware info
+sudo dmidecode --type <dmidecode_dmi_type_keyword>
+$ dmidecode_dmi_type_keyword : echo 'bios system baseboard chassis processor memory cache connector slot' | tr ' ' '\n'
+
+# show cpu hardware info
+sudo cat /proc/cpuinfo
+
+# show memory usage of processes
+htop
+
+# show free memory size
+free -h --si
+
+# show free disk size
+df -hH
+
+# show block devices
+lsblk -ap
+
+# show file sizes in directory
+sudo du -hs $(realpath <path>)/* | sort -hr
