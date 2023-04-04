@@ -27,6 +27,10 @@
 !.ssh/conf.d
 !.ssh/conf.d/keepalive.conf
 
+!.sdkman
+!.sdkman/etc
+!.sdkman/etc/config
+
 !workspace
 !workspace/.setup
 !workspace/.setup/*
