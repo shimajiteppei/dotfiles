@@ -22,12 +22,17 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-zinit light-mode for \
+zinit for \
   romkatv/powerlevel10k \
+  marlonrichert/zsh-autocomplete \
+  olets/zsh-abbr \
+
+zinit light-mode for \
   zdharma-continuum/fast-syntax-highlighting \
   zdharma-continuum/history-search-multi-word \
   arzzen/calc.plugin.zsh \
-  olets/zsh-abbr \
+
+bindkey -e
 
 autoload -Uz compinit
 compinit
