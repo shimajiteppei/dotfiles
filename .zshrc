@@ -72,7 +72,7 @@ eval "$(pyenv init -)"
 
 path=(
   $path
-  /snap/bin
+  /snap/bin(N-/)
   $HOME/.local/bin(N-/)
   $VOLTA_HOME/bin(N-/)
   $HOME/.cargo/bin(N-/)
