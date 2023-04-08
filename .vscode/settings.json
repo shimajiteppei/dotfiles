@@ -1,4 +1,13 @@
 {
+  // https://code.visualstudio.com/docs/getstarted/settings#_default-settings
+  "files.exclude": {
+    "**/.git": false,
+    "**/.svn": false,
+    "**/.hg": false,
+    "**/CVS": false,
+    "**/.DS_Store": false,
+    "**/Thumbs.db": false
+  },
   "files.watcherExclude": {
     "*": true,
   },
