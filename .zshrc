@@ -128,3 +128,29 @@ alias git cm='commit -m'
 alias git ca='commit --amend'
 alias git config='config --local'
 alias git s='status'
+
+
+##
+## fast-syntax-highlighting highlighting of abbreviations (https://github.com/olets/zsh-abbr/issues/24)
+##
+
+chroma_single_word() {
+  (( next_word = 2 | 8192 ))
+
+  local __first_call="$1" __wrd="$2" __start_pos="$3" __end_pos="$4"
+  local __style
+
+  (( __first_call )) && { __style=${FAST_THEME_NAME}command }
+  [[ -n "$__style" ]] && (( __start=__start_pos-${#PREBUFFER}, __end=__end_pos-${#PREBUFFER}, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[$__style]}")
+
+  (( this_word = next_word ))
+  _start_pos=$_end_pos
+
+  return 0
+}
+
+for key in ${(f)"$(abbr list-abbreviations)"}
+do
+  # exclude abbreviation with whitespace
+  [[ $key != *' '* ]] && FAST_HIGHLIGHT+=( "chroma-${(Q)key}" chroma_single_word )
+done
