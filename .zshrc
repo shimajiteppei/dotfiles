@@ -151,6 +151,12 @@ chroma_single_word() {
 
 for key in ${(f)"$(abbr list-abbreviations)"}
 do
-  # exclude abbreviation with whitespace
-  [[ $key != *' '* ]] && FAST_HIGHLIGHT+=( "chroma-${(Q)key}" chroma_single_word )
+  # exclude following abbreviations:
+  # - abbreviation with whitespace
+  # - command already in PATH
+  # - command already in fast-syntax-highlighting chroma array
+  [[ $key != *' '* ]] && \
+  [[ ! -x $(command -v ${(Q)key}) ]] && \
+  [[ -z $FAST_HIGHLIGHT["chroma-${(Q)key}"] ]] && \
+  FAST_HIGHLIGHT+=( "chroma-${(Q)key}" chroma_single_word )
 done
