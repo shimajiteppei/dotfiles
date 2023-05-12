@@ -168,7 +168,10 @@ register_chroma() {
   return 0
 }
 
-for key in ${(f)"$(abbr list-abbreviations)"}
-do
-  register_chroma $key
-done
+
+if [[ -n $FAST_HIGHLIGHT ]]; then
+  for key in ${(f)"$(abbr list-abbreviations)"}
+  do
+    register_chroma $key
+  done
+fi
