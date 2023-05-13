@@ -149,29 +149,26 @@ chroma_single_word() {
   return 0
 }
 
-# register key execpt for the followings:
-# - multi-word key
-# - key already in PATH
-# - key already in fast-syntax-highlighting chroma array
-register_chroma() {
-  local key=$1
-  if [[ $key == *' '* ]]; then
+# register single word command execpt for the followings:
+# - already in PATH
+# - already in fast-syntax-highlighting chroma map
+register_single_word_chroma() {
+  local word=$1
+  if [[ -x $(command -v $word) ]] || [[ -n $FAST_HIGHLIGHT["chroma-$word"] ]]; then
     return 1
   fi
 
-  local raw_key=${(Q)key}
-  if [[ -x $(command -v $raw_key) ]] || [[ -n $FAST_HIGHLIGHT["chroma-$raw_key"] ]]; then
-    return 1
-  fi
-
-  FAST_HIGHLIGHT+=( "chroma-$raw_key" chroma_single_word )
+  FAST_HIGHLIGHT+=( "chroma-$word" chroma_single_word )
   return 0
 }
 
 
 if [[ -n $FAST_HIGHLIGHT ]]; then
-  for key in ${(f)"$(abbr list-abbreviations)"}
-  do
-    register_chroma $key
+
+  for abbr in ${(f)"$(abbr list-abbreviations)"}; do
+    if [[ $abbr != *' '* ]]; then
+      register_single_word_chroma ${(Q)abbr}
+    fi
   done
+
 fi
