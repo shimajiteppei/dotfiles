@@ -21,6 +21,7 @@
 !.config
 !.config/navi
 !.config/navi/config.yaml
+!.config/libinput-gestures.conf
 
 !.ssh
 !.ssh/config
