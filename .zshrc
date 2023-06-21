@@ -172,3 +172,12 @@ if [[ -n $FAST_HIGHLIGHT ]]; then
   done
 
 fi
+
+
+##
+## autocomplete for hostnames defined in .ssh/conf.d/*.conf
+##
+
+function _ssh {
+  compadd $(find ~/.ssh/ -type f -name '*.conf' | xargs egrep '^Host ' | awk '{print $2}' | egrep '^[^\*]+$' | sort);
+}
