@@ -5,6 +5,7 @@
 !README.md
 !.vscode
 !.vscode/settings.json
+!.vscode/extensions.json
 
 # xdg base directory
 !.config
@@ -49,6 +50,6 @@
 !.ssh/config
 !.ssh/conf.d
 !.ssh/conf.d/keepalive.conf
-!.sdkman
-!.sdkman/etc
-!.sdkman/etc/config
+!.local/share/sdkman
+!.local/share/sdkman/etc
+!.local/share/sdkman/etc/config

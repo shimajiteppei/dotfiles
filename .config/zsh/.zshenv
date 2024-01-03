@@ -1,7 +1,7 @@
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 
 export VOLTA_HOME="$HOME/.volta"
-export SDKMAN_DIR="$HOME/.sdkman"
+export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"
 export PYENV_ROOT="$HOME/.pyenv"
 
 path=(
