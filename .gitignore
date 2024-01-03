@@ -1,37 +1,54 @@
+# settings for dotfiles repository
 *
 !.gitignore
+!.gitmodules
 !README.md
 !.vscode
 !.vscode/settings.json
 
-!.gitconfig
-!.githooks
-!.githooks/*
-
-!.zshrc
-!.p10k.zsh
-
+# xdg base directory
+!.config
 !.local
 !.local/share
-!.local/share/navi
-!.local/share/navi/cheats
-!.local/share/navi/cheats/tomoesaturn__cheats
-!.local/share/navi/cheats/tomoesaturn__cheats/*.cheat
+!.local/share/xdg-ninja
 
-!.config
+# global git config
+!.config/git
+!.config/git/**
+
+# zsh
+!.zshenv
+!.config/zsh
+!.config/zsh/.zshenv
+!.config/zsh/.zshrc
+!.config/zsh/*.zsh
+# zinit
+!.local/share/zinit
+!.local/share/zinit/zinit.git
+# navi
 !.config/navi
 !.config/navi/config.yaml
-!.config/libinput-gestures.conf
+!.local/share/fzf
+!.local/share/navi
+!.local/share/navi/cheats
+!.local/share/navi/cheats/**
 
+# workspace
+!workspace
+!workspace/.gitkeep
+!workspace/project
+!workspace/project/.gitkeep
+!workspace/tmp
+!workspace/tmp/.gitkeep
+!workspace/scratch
+!workspace/scratch/.gitkeep
+
+# others
+!.config/libinput-gestures.conf
 !.ssh
 !.ssh/config
 !.ssh/conf.d
 !.ssh/conf.d/keepalive.conf
-
 !.sdkman
 !.sdkman/etc
 !.sdkman/etc/config
-
-!workspace
-!workspace/.setup
-!workspace/.setup/*

@@ -1,0 +1,9 @@
+[submodule "xdg-ninja"]
+	path = .local/share/xdg-ninja
+	url = https://github.com/b3nj5m1n/xdg-ninja.git
+[submodule "fzf"]
+	path = .local/share/fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule "zinit"]
+	path = .local/share/zinit/zinit.git
+	url = https://github.com/zdharma-continuum/zinit

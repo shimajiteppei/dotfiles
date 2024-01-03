@@ -1,0 +1,70 @@
+% file
+
+rsync
+
+% symbolic link ln
+# create symbolic link
+echo hoge
+
+% symbolic link ln
+# remove symbolic link
+echo hoge
+
+
+# Create symlink
+ln -s <source-dirname> <destination-dirname>
+
+# Update symlink
+ln -sfn <source-dirname> <destination-dirname>
+
+# Remove symlink
+unlink <sample-dirname>
+
+
+% dd
+# create iso disk 
+dd bs=4M if=/home/hotaru/Downloads/kali-linux-2022.3-live-amd64.iso of=/dev/sda conv=fsync oflag=direct status=progress
+
+% find
+# Delete all broken symlinks
+find -L . -name . -o -type d -prune -o -type l -exec rm {} +
+
+# Delete empty directories
+find . -type d -empty -delete
+
+
+# List all files of type
+find . -name '*.<txt>' -print
+
+
+# find resursive
+echo hoge
+
+% tar
+
+# Create a tar containing files
+tar cf <name>.tar <files>
+
+# Extract the files from a tar
+tar xf <tar_file>
+
+# Create a tar with Gzip compression
+tar czf <name>.tar.gz <files> 
+
+# Extract a tar using Gzip
+tar xzf <targz_file>
+
+# Compress file and appends .gz to its name
+gzip <path>
+
+# Decompress compressed file
+gzip -d <gz_file>
+
+$ path: ls
+$ tar_file: ls *.tar
+$ targz_file: ls *.tar.gz
+$ gz_file: ls *.gz
+
+
+% compress single file
+gzip <path>

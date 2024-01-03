@@ -1,0 +1,75 @@
+%ip
+ip
+arp
+
+# Find primary, local IP address
+ifconfig \
+  | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' \
+  | grep -Eo '([0-9]*\.){3}[0-9]*' \
+  | grep -v '127.0.0.1' \
+  | tail -n1
+
+%icmp
+ping
+traceroute
+
+%tcp
+nmap
+telnet
+lsof -i
+# Kill a process running on a given port
+lsof -i :<port> \
+   | awk '{l=$2} END {print l}' \
+   | xargs kill
+
+# List IP addresses connected on a given port
+netstat -tn 2>/dev/null \
+   | grep :<port> \
+   | awk '{print $5}' \
+   | cut -d: -f1 \
+   | sort \
+   | uniq -c \
+   | sort -nr \
+   | head
+ss
+
+# Map ports
+sudo nmap -sS -sV -0 "<target>"
+
+# Find process using a port
+lsof -n -i4TCP:<port> | grep LISTEN
+
+# List open ports
+lsof -Pn -i4
+
+$ self_global_ip: dig +short myip.opendns.com @resolver1.opendns.com
+$ process: lsof -iTCP -sTCP:LISTEN -n -P | sed -E "s/:([0-9][0-9][0-9]+) /:$(tput setaf 3)\1$(tput sgr0) /g" --- --header-lines 1
+
+%ftp
+ftp
+
+%ssh
+ssh <username_remote>
+$ username_remote: cat ~/.ssh/config | grep -i "host "|sed 's/^[ \t]*//g' | awk '{print $2}'
+
+# Start ssh agent
+eval "$(ssh-agent -s)"; ssh-add
+
+
+%dns
+hostname
+dig
+
+% cert signature
+# generate self-signed certification
+openssl req -x509 -newkey rsa:4096 -sha256 -days 365 -nodes \
+  -keyout domain.key \
+  -out signed.crt \
+  -subj "/CN=${DOMAIN}" \
+  -addext "subjectAltName=DNS:${DOMAIN}" \
+  -addext "extendedKeyUsage=serverAuth"
+
+certbot
+
+# show wi-fi password
+nmcli device wifi show-password

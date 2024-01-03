@@ -24,5 +24,18 @@ git reset --hard HEAD~<number_of_commits>
 # Remove commits from local repository (keep changes)
 git reset --soft HEAD~<number_of_commits>
 
+# Diff two files with git-diff
+git diff --no-index <file1> <file2>
+
+# Delete merged branches
+git branch --format='%(refname:short)' --merged | grep -vE '^(main|master)$' | xargs --no-run-if-empty git branch -d
+
+# Delete untracked, ignored file
+git clean -nxf "$(git rev-parse --show-toplevel)/**"
+
+# Get root directory
+git rev-parse --show-toplevel
+
+
 $ changed_files: git status --untracked-files=all -s --porcelain | awk '{print $2}'
 $ skipped_files: git ls-files -v | grep ^S | awk '{print $2}'

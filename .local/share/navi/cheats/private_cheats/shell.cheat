@@ -1,0 +1,84 @@
+% shell command
+
+# recall last command
+!!
+
+# recall last command with sudo
+sudo !!
+
+# do nothing with exit code 0
+:
+
+# status code of previous command
+$?
+
+# pid of command itself
+$$
+
+# list environment variables
+env
+
+# list local variables
+set
+
+# list local variables
+local
+
+# delete local variable
+unset <variable>
+
+# get current date time now
+date -u
+
+# diff of two commands
+diff --color <(<command1>) <(<command2>)
+
+# overwrite file with multiline text by here document
+tee <file> << 'EOF'
+
+# append multiline text to file by here document
+tee -a <file> << 'EOF'
+
+# search man page by name
+whatis -w "<word_with_wildcard>"
+
+# search man page by name and its explanation
+apropos -w "<word>"
+
+% hoge
+# ログ調査用
+tail head
+grep 前後
+grep regex
+
+# color retained less
+less -r
+
+# Change group
+chgrp <group-name-from> <group-name-to>
+
+# Search for a string inside all files in the current directory and subdrectories
+grep -r <string> *
+
+# Search and replace within file
+sed -i s/<original-text>/<new-text>/g <filename-txt>
+
+# Monitor error log (stream as file grows)
+tail error.log -f -n 0
+
+# Add the amount of lines, words, and characters to <file2-txt>
+cat <file1-txt> | <word-count> | cat > <file2-txt>
+
+# Sort the content of a file (like cat)
+sort <hello-txt>
+
+# Save to sorted content to a new file
+cat <file1-txt> | sort > <sorted-file1-txt>
+
+# Sort and remove duplicates and save to a new file
+sort <file1-txt> | uniq > <uniq-file1-txt>
+
+# generate random 128bit base64 string
+head --bytes=16 /dev/urandom | base64
+
+$ variable: set
