@@ -72,9 +72,19 @@ fi
 #
 dotfiles-update() {
   cd $HOME
+  
+  # zsh
   git submodule update --recursive
   zinit self-update
   $XDG_DATA_HOME/fzf/install --bin
+
+  # languages
+  pyenv update
+  poetry self update
+  rustup update
+  curl https://get.volta.sh | bash
+  sdk selfupdate
+  
   cd -
 }
 

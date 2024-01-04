@@ -40,10 +40,10 @@
 !workspace/.gitkeep
 !workspace/project
 !workspace/project/.gitkeep
+!workspace/templates
+!workspace/templates/**
 !workspace/tmp
 !workspace/tmp/.gitkeep
-!workspace/scratch
-!workspace/scratch/.gitkeep
 
 # others
 !.config/libinput-gestures.conf

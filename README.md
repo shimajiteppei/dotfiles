@@ -11,9 +11,8 @@
 ```sh
 cd $HOME
 git init --initial-branch main
-git remote add origin https://github.com/shimajiteppei/dotfiles.git
+git remote add origin git@github.com:shimajiteppei/dotfiles.git
 git pull origin main
-git remote set-url origin git@github.com:shimajiteppei/dotfiles.git
 ```
 
 ## ideology

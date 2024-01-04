@@ -7,3 +7,6 @@
 [submodule "zinit"]
 	path = .local/share/zinit/zinit.git
 	url = https://github.com/zdharma-continuum/zinit
+[submodule "workspace/templates/python"]
+	path = workspace/templates/python
+	url = git@github.com:shimajiteppei/template-python.git
