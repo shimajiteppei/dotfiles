@@ -22,7 +22,8 @@
 !.config/zsh
 !.config/zsh/.zshenv
 !.config/zsh/.zshrc
-!.config/zsh/*.zsh
+!.config/zsh/**/
+!.config/zsh/**/*.zsh
 # zinit
 !.local/share/zinit
 !.local/share/zinit/zinit.git

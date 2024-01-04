@@ -65,3 +65,19 @@ if [[ -n $FAST_HIGHLIGHT ]]; then
   done
 
 fi
+
+
+#
+# dotfiles
+#
+dotfiles-update() {
+  cd $HOME
+  git submodule update --recursive
+  zinit self-update
+  $XDG_DATA_HOME/fzf/install --bin
+  cd -
+}
+
+dotfiles-check() {
+  $XDG_DATA_HOME/xdg-ninja/xdg-ninja.sh
+}

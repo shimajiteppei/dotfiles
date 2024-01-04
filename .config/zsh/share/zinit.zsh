@@ -10,7 +10,7 @@ if [[ -r "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f $ZDOTDIR/p10k.zsh ]] || source $ZDOTDIR/p10k.zsh
+[[ ! -f $ZDOTDIR/share/p10k.zsh ]] || source $ZDOTDIR/share/p10k.zsh
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 
