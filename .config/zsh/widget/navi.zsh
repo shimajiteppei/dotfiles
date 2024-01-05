@@ -1,32 +1,36 @@
 ##
+## env
+##
+
+path=($path
+  $XDG_DATA_HOME/fzf/bin
+)
+typeset -U path PATH
+export PATH
+
+
+##
+## install
+##
+
+[[ -s "$XDG_DATA_HOME/fzf/bin/fzf" ]] || $XDG_DATA_HOME/fzf/install --bin
+command -v navi >/dev/null || cargo install navi
+
+
+##
+## init
+##
+
+source "$XDG_DATA_HOME/fzf/shell/completion.zsh"
+# open navi with Ctrl + G
+eval "$(navi widget zsh)"
+
+
+##
 ## alias
 ##
 
-alias alias='abbr --session --global --quieter --force'
-abbr clear-session
-alias history="history 0"
-alias grep='grep --color=auto'
-alias ll='ls -lahF --color'
-alias cp='cp -i'
-alias mv='mv -i'
-alias rm='mv -t $XDG_DATA_HOME/Trash/files'
-alias mkdir='mkdir -p'
-alias g='git'
-alias gs='git status'
-# https://zsh-abbr.olets.dev/commands.html#git
-alias git ap='add -p'
-alias git b='branch'
-alias git ch='checkout'
-alias git clone='clone --recurse-submodules'
-alias git cm='commit -m'
-alias git config='config --local'
-alias git s='status'
-
-
-##
-## fast-syntax-highlighting highlighting of abbreviations (https://github.com/olets/zsh-abbr/issues/24)
-##
-
+# fast-syntax-highlighting highlighting of abbreviations (https://github.com/olets/zsh-abbr/issues/24)
 chroma_single_word() {
   (( next_word = 2 | 8192 ))
 
@@ -67,27 +71,11 @@ if [[ -n $FAST_HIGHLIGHT ]]; then
 fi
 
 
-#
-# dotfiles
-#
-dotfiles-update() {
-  cd $HOME
-  
-  # zsh
-  git submodule update --recursive
-  zinit self-update
-  $XDG_DATA_HOME/fzf/install --bin
+##
+## update
+##
 
-  # languages
-  pyenv update
-  poetry self update
-  rustup update
-  curl https://get.volta.sh | bash
-  sdk selfupdate
-  
-  cd -
+__dotfiles-update-widget-navi() {
+  [[ -s "$XDG_DATA_HOME/fzf/bin/fzf" ]] && $XDG_DATA_HOME/fzf/install --bin
 }
 
-dotfiles-check() {
-  $XDG_DATA_HOME/xdg-ninja/xdg-ninja.sh
-}

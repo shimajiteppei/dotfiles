@@ -1,5 +1,5 @@
 ##
-## zinit, powerlevel10k
+## powerlevel10k
 ##
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -10,12 +10,11 @@ if [[ -r "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f $ZDOTDIR/share/p10k.zsh ]] || source $ZDOTDIR/share/p10k.zsh
+[[ ! -f $ZDOTDIR/core/p10k.zsh ]] || source $ZDOTDIR/core/p10k.zsh
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
-
 ##
-## plugin, completion
+## zinit
 ##
 
 source "$XDG_DATA_HOME/zinit/zinit.git/zinit.zsh"
@@ -27,11 +26,4 @@ zinit light-mode for \
   zdharma-continuum/history-search-multi-word \
   zdharma-continuum/fast-syntax-highlighting \
   zsh-users/zsh-completions \
-  olets/zsh-abbr \
-  arzzen/calc.plugin.zsh \
-
-autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-[[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
-[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
+  olets/zsh-abbr

@@ -11,6 +11,7 @@ setopt histignorespace      # ignore commands that start with space
 setopt histverify            # show command with history expansion to user before running it
 setopt sharehistory         # share command history data
 
+# ignore some commands
 zshaddhistory() {
     local line="${1%%$'\n'}"
     [[ ! "$line" =~ "^(exit|code)($| )" ]]

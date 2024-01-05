@@ -18,18 +18,11 @@ git pull origin main
 ## ideology
 
 > 勝可知而不可為
+> 非利不動非得不用非危不戰
 
-This repository only defences:
+This repository only controls:
 
-- basic tools
-  - git
-  - zsh and plugins
-  - custom provisioning scripts, configs
-- programming language version manager
-  - Rust
-  - JavaScript
-  - Python
-  - Java
-- directory structure
-  - XDG based directories
-  - workspace
+- git configs
+- zsh and plugins
+- provisioning scripts
+- workspace directory structure
