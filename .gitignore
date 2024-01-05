@@ -54,3 +54,7 @@
 !.local/share/sdkman
 !.local/share/sdkman/etc
 !.local/share/sdkman/etc/config
+!.local/share/mozc
+!.local/share/mozc/*
+!.local/share/v4l2loopback
+!.local/share/v4l2loopback/*
