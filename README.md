@@ -25,11 +25,11 @@ This repository only defences:
   - git
   - zsh and plugins
   - custom provisioning scripts, configs
-- programming language
+- programming language version manager
   - Rust
-  - Java
+  - JavaScript
   - Python
-  - TypeScript
+  - Java
 - directory structure
   - XDG based directories
   - workspace
