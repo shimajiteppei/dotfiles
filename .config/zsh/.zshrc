@@ -15,6 +15,7 @@ export PATH
 source $ZDOTDIR/core/zinit.zsh
 source $ZDOTDIR/core/history.zsh
 source $ZDOTDIR/core/completion.zsh
+source $ZDOTDIR/core/alias.zsh
 
 ##
 ## init widget
@@ -35,11 +36,6 @@ __dotfiles-update-widget() {
 }
 
 ##
-## define update function
-##
-source $ZDOTDIR/core/update.zsh
-
-##
 ## define platform specific function
 ##
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -49,6 +45,23 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
 fi
 
 ##
-## alias
+## define update function
 ##
-source $ZDOTDIR/core/alias.zsh
+
+__dotfiles-update-self() {
+  cd $HOME
+  git submodule update --recursive
+  cd -
+
+  zinit self-update
+  __dotfiles-update-widget
+}
+
+...update() {
+    __dotfiles-update-system
+    __dotfiles-update-self
+}
+
+...check() {
+    $XDG_DATA_HOME/xdg-ninja/xdg-ninja.sh
+}

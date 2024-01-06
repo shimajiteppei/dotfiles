@@ -26,3 +26,16 @@ This repository only controls:
 - zsh and plugins
 - provisioning scripts
 - workspace directory structure
+
+This repository does not force the HOME directory to conform to the XDG based directory.
+However, when committing the configuration of installed external tools, it is preferable to conform to the XDG based directory as much as possible.
+
+## commands
+
+```shell
+# update system and dotfiles itself
+...update
+
+# check XDG based directory
+...check
+```

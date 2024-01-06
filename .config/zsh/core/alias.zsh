@@ -10,7 +10,6 @@ alias grep='grep --color=auto'
 alias ll='ls -lahF --color'
 alias cp='cp -i'
 alias mv='mv -i'
-alias rm='mv -t $XDG_DATA_HOME/Trash/files'
 alias mkdir='mkdir -p'
 
 alias g='git'
