@@ -16,7 +16,6 @@ export PATH
 ##
 
 command -v pyenv >/dev/null || (curl https://pyenv.run | bash)
-command -v poetry >/dev/null || (curl -sSL https://install.python-poetry.org | python3 -)
 
 
 ##
@@ -24,6 +23,8 @@ command -v poetry >/dev/null || (curl -sSL https://install.python-poetry.org | p
 ##
 
 command -v pyenv >/dev/null && eval "$(pyenv init -)"
+(pyenv global | grep 3.11-dev) || pyenv install 3.11-dev && pyenv global 3.11-dev
+command -v poetry >/dev/null || command -v python >/dev/null || (curl -sSL https://install.python-poetry.org | python -)
 
 
 ##
