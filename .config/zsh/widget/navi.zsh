@@ -2,6 +2,7 @@
 ## env
 ##
 
+export NAVI_PATH="$XDG_DATA_HOME/navi"
 path=($path
   $XDG_DATA_HOME/fzf/bin
 )
