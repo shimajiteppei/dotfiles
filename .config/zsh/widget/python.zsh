@@ -36,7 +36,15 @@ command -v poetry >/dev/null || command -v python >/dev/null || (curl -sSL https
 ## update
 ##
 
-__dotfiles-update-widget-python() {
+__dotfiles_widget-update-python() {
   command -v pyenv >/dev/null && pyenv update
   command -v poetry >/dev/null && poetry self update
+}
+
+
+##
+## clean
+##
+
+__dotfiles_widget-clean-python() {
 }

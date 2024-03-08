@@ -76,7 +76,14 @@ fi
 ## update
 ##
 
-__dotfiles-update-widget-navi() {
+__dotfiles_widget-update-navi() {
   [[ -s "$XDG_DATA_HOME/fzf/bin/fzf" ]] && $XDG_DATA_HOME/fzf/install --bin
 }
 
+
+##
+## clean
+##
+
+__dotfiles_widget-clean-navi() {
+}

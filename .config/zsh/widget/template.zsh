@@ -28,5 +28,13 @@ export PATH
 ## update
 ##
 
-__dotfiles-update-widget-XXX() {
+__dotfiles_widget-update-XXX() {
+}
+
+
+##
+## clean
+##
+
+__dotfiles_widget-clean-XXX() {
 }

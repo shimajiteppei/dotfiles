@@ -28,5 +28,13 @@ export PATH
 ## update
 ##
 
-__dotfiles-update-widget-golang() {
+__dotfiles_widget-update-golang() {
+}
+
+
+##
+## clean
+##
+
+__dotfiles_widget-clean-golang() {
 }

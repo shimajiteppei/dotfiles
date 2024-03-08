@@ -20,20 +20,32 @@ source $ZDOTDIR/core/alias.zsh
 ##
 ## init widget
 ##
-source $ZDOTDIR/widget/rust.zsh
-source $ZDOTDIR/widget/python.zsh
-source $ZDOTDIR/widget/nodejs.zsh
-source $ZDOTDIR/widget/java.zsh
-source $ZDOTDIR/widget/golang.zsh
-source $ZDOTDIR/widget/navi.zsh
-__dotfiles-update-widget() {
-    __dotfiles-update-widget-rust
-    __dotfiles-update-widget-python
-    __dotfiles-update-widget-nodejs
-    __dotfiles-update-widget-java
-    __dotfiles-update-widget-golang
-    __dotfiles-update-widget-navi
+__dotfiles_widget=(
+    docker
+    rust
+    python
+    nodejs
+    java
+    golang
+    navi
+)
+
+for widget in $__dotfiles_widget; do
+    source $ZDOTDIR/widget/$widget.zsh
+done
+
+__dotfiles-widget-update() {
+    for widget in $__dotfiles_widget; do
+        "__dotfiles_widget-update-$widget"
+    done
 }
+
+__dotfiles-widget-clean() {
+    for widget in $__dotfiles_widget; do
+        "__dotfiles_widget-clean-$widget"
+    done
+}
+
 
 ##
 ## define platform specific function
@@ -45,7 +57,7 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
 fi
 
 ##
-## define update function
+## define alias function
 ##
 
 __dotfiles-update-self() {
@@ -54,7 +66,7 @@ __dotfiles-update-self() {
   cd -
 
   zinit self-update
-  __dotfiles-update-widget
+  __dotfiles-widget-update
 }
 
 ...update() {
@@ -64,4 +76,8 @@ __dotfiles-update-self() {
 
 ...check() {
     $XDG_DATA_HOME/xdg-ninja/xdg-ninja.sh
+}
+
+...clean() {
+    __dotfiles-widget-clean
 }

@@ -31,7 +31,15 @@ command -v cargo-install-update >/dev/null || cargo install cargo-update
 ## update
 ##
 
-__dotfiles-update-widget-rust() {
+__dotfiles_widget-update-rust() {
   command -v rustup >/dev/null && rustup update
   command -v cargo-install-update >/dev/null && cargo install-update --all
+}
+
+
+##
+## clean
+##
+
+__dotfiles_widget-clean-rust() {
 }
