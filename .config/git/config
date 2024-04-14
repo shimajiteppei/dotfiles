@@ -1,5 +1,5 @@
 [core]
-  editor = vim
+  editor = nano
   # TODO: replace to XDG_CONFIG_HOME
   hooksPath = ~/.config/git/hooks
 

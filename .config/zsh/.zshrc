@@ -81,3 +81,11 @@ __dotfiles-update-self() {
 ...clean() {
     __dotfiles-widget-clean
 }
+
+
+##
+## editor
+##
+
+export EDITOR=nano
+export VISUAL=nano
