@@ -1,0 +1,16 @@
+name: Installer Test
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@main
+      - name: Installer Test
+        run: |
+          ./installer.ubuntu_24.sh

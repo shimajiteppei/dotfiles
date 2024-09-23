@@ -6,6 +6,11 @@
 !.vscode
 !.vscode/settings.json
 !.vscode/extensions.json
+!.github
+!.github/**
+
+# installer
+!installer*.sh
 
 # xdg base directory
 !.config
