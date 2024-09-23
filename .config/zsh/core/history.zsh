@@ -2,7 +2,9 @@
 ## history
 ##
 
+mkdir -p $XDG_STATE_HOME/zsh
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
+touch $HISTFILE
 HISTSIZE=100000
 SAVEHIST=200000
 setopt histexpiredupsfirst # delete duplicates first when HISTFILE size exceeds HISTSIZE

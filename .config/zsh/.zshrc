@@ -23,10 +23,8 @@ source $ZDOTDIR/core/alias.zsh
 __dotfiles_widget=(
     docker
     rust
-    python
     nodejs
     java
-    golang
     navi
 )
 
