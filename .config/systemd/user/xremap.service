@@ -1,0 +1,11 @@
+# systemctl --user enable --now xremap
+[Unit]
+Description=Xremap
+
+[Service]
+Type=simple
+ExecStart=%h/.cargo/bin/xremap %h/.config/xremap/config.yaml
+Restart=always
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,13 @@
+# https://github.com/xremap/xremap
+#
+# Installation
+# cargo install xremap --features gnome 
+# sudo gpasswd -a $USER input
+# echo 'KERNEL=="uinput", GROUP="input", TAG+="uaccess"' | sudo tee /etc/udev/rules.d/input.rules
+# systemctl --user enable --now xremap
+#
+modmap:
+  - name: CAPSLOCK, CTRL-L
+    remap:
+      CAPSLOCK: LEFTCTRL
+      LEFTCTRL: F13
