@@ -65,5 +65,7 @@
 !.config/xremap/**
 !.config/mozc
 !.config/mozc/ibus_config.textproto
+!.config/guake
+!.config/guake/config
 !.local/share/v4l2loopback
 !.local/share/v4l2loopback/*
