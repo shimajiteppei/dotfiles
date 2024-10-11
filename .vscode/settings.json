@@ -11,8 +11,6 @@
   "files.watcherExclude": {
     "*": true,
   },
-  "search.exclude": {
-    "*": true,
-  },
+  "search.useIgnoreFiles": true,
   "search.followSymlinks": false,
 }
