@@ -54,7 +54,6 @@
 !.config/systemd
 !.config/systemd/user
 !.config/systemd/user/xremap.service
-!.config/libinput-gestures.conf
 !.config/xremap
 !.config/xremap/**
 !.ssh
