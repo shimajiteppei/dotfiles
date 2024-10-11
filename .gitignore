@@ -60,7 +60,7 @@
 !.ssh/config
 !.ssh/conf.d
 !.ssh/conf.d/keepalive.conf
-!.local/share/mozc
-!.local/share/mozc/*
+!.config/mozc
+!.config/mozc/ibus_config.textproto
 !.local/share/v4l2loopback
 !.local/share/v4l2loopback/*
