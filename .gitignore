@@ -1,26 +1,32 @@
-# settings for dotfiles repository
 *
-!.gitignore
-!.gitmodules
-!README.md
+
+# readme
+!README*.md
+
+# vscode
 !.vscode
 !.vscode/settings.json
 !.vscode/extensions.json
+
+# git
 !.github
 !.github/**
+!.gitignore
+!.gitmodules
+!.config/git
+!.config/git/**
 
-# installer
-!installer*.sh
+# ssh
+!.ssh
+!.ssh/config
+!.ssh/conf.d
+!.ssh/conf.d/keepalive.conf
 
 # xdg base directory
 !.config
 !.local
 !.local/share
 !.local/share/xdg-ninja
-
-# global git config
-!.config/git
-!.config/git/**
 
 # zsh
 !.zshenv
@@ -45,21 +51,18 @@
 !workspace/.gitkeep
 !workspace/project
 !workspace/project/.gitkeep
-!workspace/templates
-!workspace/templates/**
 !workspace/tmp
 !workspace/tmp/.gitkeep
 
-# others
+# installer
+!installer*.sh
+
+# ubuntu specific files
 !.config/systemd
 !.config/systemd/user
 !.config/systemd/user/xremap.service
 !.config/xremap
 !.config/xremap/**
-!.ssh
-!.ssh/config
-!.ssh/conf.d
-!.ssh/conf.d/keepalive.conf
 !.config/mozc
 !.config/mozc/ibus_config.textproto
 !.local/share/v4l2loopback
