@@ -1,0 +1,36 @@
+__DOTFILES_OS_NAME=macos
+
+
+##
+## env
+##
+"__dotfiles_os-env-${__DOTFILES_OS_NAME}"() {
+}
+
+
+##
+## init
+##
+"__dotfiles_os-init-${__DOTFILES_OS_NAME}"() {
+    ##
+    ## init
+    ##
+    export EDITOR=nano
+    export VISUAL=nano
+
+    ##
+    ## alias
+    ##
+    alias rm='mv -t $HOME/.Trash/'
+}
+
+
+##
+## update
+##
+"__dotfiles_os-update-${__DOTFILES_OS_NAME}"() {
+    brew upgrade
+}
+
+
+unset __DOTFILES_OS_NAME
