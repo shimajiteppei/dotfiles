@@ -26,5 +26,5 @@ zsh -ic 'command -v cargo'
 zsh -ic 'command -v navi'
 
 # exit
-set +e
+set +ex
 exit 0

@@ -1,41 +1,62 @@
-# dotfiles
+# 💠 dotfiles 💠
 
-💠 my dotfiles 💠
+## Checklist for setting up a new machine
 
-## configure
+- [Ubuntu](./workspace/dotfiles/README.ubuntu.md)
+- [MacOS](./workspace/dotfiles/README.mac.md)
+- [Windows](./workspace/dotfiles/README.windows.md)
 
-1. install `bash`, `zsh`
-2. set default shell to `zsh`
-3. pull this repository
+## Installation
 
-```sh
+1. install git
+
+2. pull git repository
+
+```shell
 cd $HOME
-git init --initial-branch main
-git remote add origin git@github.com:shimajiteppei/dotfiles.git
-git pull origin main
+test -d .git || (
+    git init --initial-branch main
+    git remote add origin https://github.com/shimajiteppei/dotfiles.git
+    git pull origin main
+    git submodule update --init --remote --recursive
+)
 ```
 
-## ideology
+3. run installer
 
-> 勝可知而不可為
-> 非利不動非得不用非危不戰
+```sh
+$HOME/workspace/dotfiles/installer.ubuntu_24.sh
+```
 
-This repository only controls:
+### DO NOT
 
-- git configs
-- zsh and plugins
-- provisioning scripts
-- workspace directory structure
+DO NOT run `chsh -s $(which zsh)`.
 
-This repository does not force the HOME directory to conform to the XDG based directory.
-However, when committing the configuration of installed external tools, it is preferable to conform to the XDG based directory as much as possible.
-
-## commands
+## Usage
 
 ```shell
 # update system and dotfiles itself
 ...update
 
+# clean widget environment
+...clean
+
 # check XDG based directory
 ...check
+```
+
+## Develop
+
+use VSCode
+
+## Testing
+
+run test
+```shell
+$HOME/workspace/dotfiles/test.sh
+```
+
+clear test data
+```shell
+$HOME/workspace/dotfiles/test.sh clear
 ```

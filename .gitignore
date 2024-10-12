@@ -1,7 +1,10 @@
 *
 
-# readme
-!README*.md
+# dotfiles
+!README.md
+!workspace
+!workspace/dotfiles
+!workspace/dotfiles/**
 
 # vscode
 !.vscode
@@ -47,8 +50,6 @@
 !.local/share/navi/cheats/**
 
 # workspace
-!workspace
-!workspace/.gitkeep
 !workspace/project
 !workspace/project/.gitkeep
 !workspace/tmp
