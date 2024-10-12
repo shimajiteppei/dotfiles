@@ -4,7 +4,7 @@ __DOTFILES_WIDGET_NAME=navi
 ##
 ## env (envs must be loaded in main thread)
 ##
-export NAVI_PATH="$XDG_DATA_HOME/navi"
+export NAVI_PATH="$XDG_CONFIG_HOME/navi"
 path=($path
     $XDG_DATA_HOME/fzf/bin
 )

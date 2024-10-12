@@ -16,20 +16,22 @@
 !.github/**
 !.gitignore
 !.gitmodules
+!.config
 !.config/git
 !.config/git/**
+# submodules
+!.local
+!.local/share
+!.local/share/xdg-ninja
+!.local/share/zinit
+!.local/share/zinit/zinit.git
+!.local/share/fzf
 
 # ssh
 !.ssh
 !.ssh/config
 !.ssh/conf.d
 !.ssh/conf.d/keepalive.conf
-
-# xdg base directory
-!.config
-!.local
-!.local/share
-!.local/share/xdg-ninja
 
 # zsh
 !.zshenv
@@ -38,16 +40,12 @@
 !.config/zsh/.zshrc
 !.config/zsh/**/
 !.config/zsh/**/*.zsh
-# zinit
-!.local/share/zinit
-!.local/share/zinit/zinit.git
+
 # navi
 !.config/navi
 !.config/navi/config.yaml
-!.local/share/fzf
-!.local/share/navi
-!.local/share/navi/cheats
-!.local/share/navi/cheats/**
+!.config/navi/cheats
+!.config/navi/cheats/**
 
 # workspace
 !workspace/project
