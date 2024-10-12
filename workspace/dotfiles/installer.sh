@@ -34,10 +34,11 @@ zsh $ZDOTDIR/.zshrc
 
 
 # check if widgets are installed
-zsh -ic 'command -v sdk'
-zsh -ic 'command -v volta'
 zsh -ic 'command -v cargo'
 zsh -ic 'command -v navi'
+zsh -ic 'command -v uv'
+zsh -ic 'command -v sdk'
+zsh -ic 'command -v volta'
 
 
 # exit
