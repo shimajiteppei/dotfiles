@@ -55,9 +55,6 @@
 !workspace/tmp
 !workspace/tmp/.gitkeep
 
-# installer
-!installer*.sh
-
 # ubuntu specific files
 !.config/systemd
 !.config/systemd/user
