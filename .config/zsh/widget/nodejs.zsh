@@ -2,19 +2,20 @@ __DOTFILES_WIDGET_NAME=nodejs
 
 
 ##
+## env (envs must be loaded in main thread)
+##
+export VOLTA_HOME="$HOME/.volta"
+path=($path
+    $VOLTA_HOME/bin
+)
+typeset -U path PATH
+export PATH
+
+
+##
 ## init
 ##
 "__dotfiles_widget-init-${__DOTFILES_WIDGET_NAME}"() {
-    ##
-    ## env
-    ##
-    export VOLTA_HOME="$HOME/.volta"
-    path=($path
-        $VOLTA_HOME/bin
-    )
-    typeset -U path PATH
-    export PATH
-
     ##
     ## install
     ##

@@ -7,6 +7,9 @@ else
 fi
 
 source $ZDOTDIR/os/${__DOTFILES_OS_TYPE}.zsh
-__dotfiles_os-env() { "__dotfiles_os-env-$__DOTFILES_OS_TYPE"; }
-__dotfiles_os-init() { "__dotfiles_os-init-$__DOTFILES_OS_TYPE"; }
-__dotfiles_os-update() { "__dotfiles_os-update-$__DOTFILES_OS_TYPE"; }
+__dotfiles_os-init() {
+    "__dotfiles_os-init-${__DOTFILES_OS_TYPE}"
+}
+__dotfiles_os-update() {
+    "__dotfiles_os-update-${__DOTFILES_OS_TYPE}"
+}

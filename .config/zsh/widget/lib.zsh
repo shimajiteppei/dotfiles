@@ -1,4 +1,4 @@
-__DOTFILES_WIDGET_NAME=(
+__DOTFILES_WIDGET_LIST=(
     docker
     rust
     navi
@@ -6,24 +6,24 @@ __DOTFILES_WIDGET_NAME=(
     java
 )
 
-for widget in $__DOTFILES_WIDGET_NAME; do
+for widget in $__DOTFILES_WIDGET_LIST; do
     source $ZDOTDIR/widget/$widget.zsh
 done
 
 __dotfiles_widget-init() {
-    for widget in $__dotfiles_widget; do
-        "__dotfiles_widget-init-$widget"
+    for widget in $__DOTFILES_WIDGET_LIST; do
+        "__dotfiles_widget-init-${widget}";
     done
 }
 
 __dotfiles_widget-update() {
-    for widget in $__DOTFILES_WIDGET_NAME; do
-        "__dotfiles_widget-update-$widget"
+    for widget in $__DOTFILES_WIDGET_LIST; do
+        "__dotfiles_widget-update-${widget}";
     done
 }
 
 __dotfiles_widget-clean() {
-    for widget in $__DOTFILES_WIDGET_NAME; do
-        "__dotfiles_widget-clean-$widget"
+    for widget in $__DOTFILES_WIDGET_LIST; do
+        "__dotfiles_widget-clean-${widget}";
     done
 }

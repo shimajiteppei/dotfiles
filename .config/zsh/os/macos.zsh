@@ -2,10 +2,8 @@ __DOTFILES_OS_NAME=macos
 
 
 ##
-## env
+## env (envs must be loaded in main thread)
 ##
-"__dotfiles_os-env-${__DOTFILES_OS_NAME}"() {
-}
 
 
 ##

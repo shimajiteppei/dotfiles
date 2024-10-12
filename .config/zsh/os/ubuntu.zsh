@@ -2,17 +2,15 @@ __DOTFILES_OS_NAME=ubuntu
 
 
 ##
-## env
+## env (envs must be loaded in main thread)
 ##
-"__dotfiles_os-env-${__DOTFILES_OS_NAME}"() {
-    path=(
-        $path
-        /snap/bin
-        $HOME/.local/bin
-    )
-    typeset -U path PATH
-    export PATH
-}
+path=(
+    $path
+    /snap/bin
+    $HOME/.local/bin
+)
+typeset -U path PATH
+export PATH
 
 
 ##

@@ -2,18 +2,19 @@ __DOTFILES_WIDGET_NAME=template
 
 
 ##
+## env (envs must be loaded in main thread)
+##
+path=($path
+    
+)
+typeset -U path PATH
+export PATH
+
+
+##
 ## init
 ##
 "__dotfiles_widget-init-${__DOTFILES_WIDGET_NAME}"() {
-    ##
-    ## env
-    ##
-    path=($path
-    
-    )
-    typeset -U path PATH
-    export PATH
-
     ##
     ## install
     ##

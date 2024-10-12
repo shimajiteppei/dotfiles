@@ -2,19 +2,20 @@ __DOTFILES_WIDGET_NAME=navi
 
 
 ##
+## env (envs must be loaded in main thread)
+##
+export NAVI_PATH="$XDG_DATA_HOME/navi"
+path=($path
+    $XDG_DATA_HOME/fzf/bin
+)
+typeset -U path PATH
+export PATH
+
+
+##
 ## init
 ##
 "__dotfiles_widget-init-${__DOTFILES_WIDGET_NAME}"() {
-    ##
-    ## env
-    ##
-    export NAVI_PATH="$XDG_DATA_HOME/navi"
-    path=($path
-      $XDG_DATA_HOME/fzf/bin
-    )
-    typeset -U path PATH
-    export PATH
-
     ##
     ## install
     ##

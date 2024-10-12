@@ -2,14 +2,15 @@ __DOTFILES_WIDGET_NAME=java
 
 
 ##
+## env (envs must be loaded in main thread)
+##
+export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"
+
+
+##
 ## init
 ##
 "__dotfiles_widget-init-${__DOTFILES_WIDGET_NAME}"() {
-    ##
-    ## env
-    ##
-    export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"
-
     ##
     ## install
     ##

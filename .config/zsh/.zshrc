@@ -8,7 +8,6 @@ source $ZDOTDIR/widget/lib.zsh
 ##
 ## init
 ##
-__dotfiles_os-env
 __dotfiles_core-init
 __dotfiles_os-init
 __dotfiles_widget-init

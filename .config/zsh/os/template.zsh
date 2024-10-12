@@ -2,15 +2,13 @@ __DOTFILES_OS_NAME=template
 
 
 ##
-## env
+## env (envs must be loaded in main thread)
 ##
-"__dotfiles_os-env-${__DOTFILES_OS_NAME}"() {
-    path=($path
+path=($path
     
-    )
-    typeset -U path PATH
-    export PATH
-}
+)
+typeset -U path PATH
+export PATH
 
 
 ##
