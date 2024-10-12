@@ -1,50 +1,41 @@
-##
-## env
-##
+__DOTFILES_WIDGET_NAME=python
 
-export PYENV_ROOT="$HOME/.pyenv"
+
+##
+## env (envs must be loaded in main thread)
+##
 export PIP_REQUIRE_VIRTUALENV=true
-path=($path
-  $PYENV_ROOT/bin
-)
-typeset -U path PATH
-export PATH
-
-
-##
-## install
-##
-
-command -v pyenv >/dev/null || (curl https://pyenv.run | bash)
 
 
 ##
 ## init
 ##
+"__dotfiles_widget-init-${__DOTFILES_WIDGET_NAME}"() {
+    ##
+    ## install
+    ##
+    command -v uv >/dev/null || cargo install --git https://github.com/astral-sh/uv uv
 
-command -v pyenv >/dev/null && eval "$(pyenv init -)"
-(pyenv global | grep 3.11-dev) || pyenv install 3.11-dev && pyenv global 3.11-dev
-command -v poetry >/dev/null || command -v python >/dev/null || (curl -sSL https://install.python-poetry.org | python -)
-
-
-##
-## alias
-##
+    ##
+    ## init
+    ##
+    eval "$(uv generate-shell-completion zsh)"
+}
 
 
 ##
 ## update
 ##
-
-__dotfiles_widget-update-python() {
-  command -v pyenv >/dev/null && pyenv update
-  command -v poetry >/dev/null && poetry self update
+"__dotfiles_widget-update-${__DOTFILES_WIDGET_NAME}"() {
+    command -v uv >/dev/null && uv self update
 }
 
 
 ##
 ## clean
 ##
-
-__dotfiles_widget-clean-python() {
+"__dotfiles_widget-clean-${__DOTFILES_WIDGET_NAME}"() {
 }
+
+
+unset __DOTFILES_WIDGET_NAME

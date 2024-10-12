@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-sudo apt install -y curl git bash zsh build-essential pkg-config libssl-dev zip unzip
+sudo apt install -y curl git bash zsh build-essential cmake pkg-config libssl-dev zip unzip
 
 cd $(dirname $0)
 if ./installer.sh; then

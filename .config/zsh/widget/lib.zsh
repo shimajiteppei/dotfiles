@@ -2,6 +2,7 @@ __DOTFILES_WIDGET_LIST=(
     docker
     rust
     navi
+    python
     nodejs
     java
 )
