@@ -12,18 +12,18 @@ done
 
 __dotfiles_widget-init() {
     for widget in $__DOTFILES_WIDGET_LIST; do
-        "__dotfiles_widget-init-${widget}";
+        "__dotfiles_widget-init-${widget}"
     done
 }
 
 __dotfiles_widget-update() {
     for widget in $__DOTFILES_WIDGET_LIST; do
-        "__dotfiles_widget-update-${widget}";
+        "__dotfiles_widget-update-${widget}"
     done
 }
 
 __dotfiles_widget-clean() {
     for widget in $__DOTFILES_WIDGET_LIST; do
-        "__dotfiles_widget-clean-${widget}";
+        "__dotfiles_widget-clean-${widget}"
     done
 }

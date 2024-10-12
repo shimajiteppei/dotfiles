@@ -53,12 +53,9 @@ export PATH
     # - already in fast-syntax-highlighting chroma map
     register_single_word_chroma() {
         local word=$1
-        if [[ -x $(command -v $word) ]] || [[ -n $FAST_HIGHLIGHT["chroma-$word"] ]]; then
-            return 1
+        if [[ ! -x $(command -v $word) ]] && [[ ! -n $FAST_HIGHLIGHT["chroma-$word"] ]]; then
+            FAST_HIGHLIGHT+=( "chroma-$word" chroma_single_word )
         fi
-
-        FAST_HIGHLIGHT+=( "chroma-$word" chroma_single_word )
-        return 0
     }
 
     if [[ -n $FAST_HIGHLIGHT ]]; then
