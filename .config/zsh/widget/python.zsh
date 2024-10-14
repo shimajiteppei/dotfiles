@@ -27,7 +27,6 @@ export PIP_REQUIRE_VIRTUALENV=true
 ## update
 ##
 "__dotfiles_widget-update-${__DOTFILES_WIDGET_NAME}"() {
-    command -v uv >/dev/null && uv self update
 }
 
 
