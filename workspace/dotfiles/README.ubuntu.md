@@ -22,7 +22,7 @@
         - [ ] ctrl -> F13
     - [ ] 入力ソース変更ショートカットをF13に設定
 - [ ] フォント設定
-    - [ ] HackGen https://github.com/yuru7/HackGen のインストール
+    - [ ] UDEV Gothic https://github.com/yuru7/udev-gothic のインストール
     - [ ] gnome tweaks
         - [ ] システムフォントの変更
 

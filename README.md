@@ -1,16 +1,23 @@
-# 💠 dotfiles 💠
+# 💠 shimajiteppei's dotfiles 💠
 
-## Checklist for setting up a new machine
+My dotfiles for Ubuntu, MacOS and WSL.
 
-- [Ubuntu](./workspace/dotfiles/README.ubuntu.md)
-- [MacOS](./workspace/dotfiles/README.mac.md)
-- [Windows](./workspace/dotfiles/README.windows.md)
+
 
 ## Installation
 
-1. install git
+### 1. install git
 
-2. pull git repository
+for Ubuntu, WSL
+```shell
+sudo apt install git
+```
+for MacOS
+```shell
+brew install git
+```
+
+### 2. pull git repository to home directory
 
 ```shell
 cd $HOME
@@ -22,15 +29,33 @@ test -d .git || (
 )
 ```
 
-3. run installer
+### 3. run installer
 
-```sh
+for Ubuntu and WSL, run [Ubuntu installer](./workspace/dotfiles/installer.ubuntu_24.sh).
+
+```shell
 $HOME/workspace/dotfiles/installer.ubuntu_24.sh
 ```
 
-### DO NOT
+for MacOS, run [MacOS installer](./workspace/dotfiles/installer.mac.sh).
+
+```shell
+$HOME/workspace/dotfiles/installer.mac.sh
+```
+
+### ! NOTICE !
 
 DO NOT run `chsh -s $(which zsh)`.
+
+
+
+## Checklist for setting up a new machine
+
+- [Ubuntu](./workspace/dotfiles/README.ubuntu.md)
+- [MacOS](./workspace/dotfiles/README.mac.md)
+- [Windows](./workspace/dotfiles/README.windows.md)
+
+
 
 ## Usage
 
@@ -45,18 +70,20 @@ DO NOT run `chsh -s $(which zsh)`.
 ...check
 ```
 
+
+
 ## Develop
 
-use VSCode
+Use VSCode.
 
-## Testing
+Main installation process is implemented in [.config/zsh/.zshrc](.config/zsh/.zshrc).
 
-run test
+.zshrc is tested with [test.sh](./workspace/dotfiles/test.sh) and [github workflow](./.github/workflows/test-install.yaml).
+
 ```shell
+# run installation test with multipass VM
 $HOME/workspace/dotfiles/test.sh
-```
 
-clear test data
-```shell
+# delete installation test VM
 $HOME/workspace/dotfiles/test.sh clear
 ```
