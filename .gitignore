@@ -32,6 +32,7 @@
 !.ssh/config
 !.ssh/conf.d
 !.ssh/conf.d/keepalive.conf
+!.ssh/conf.d/template.conf
 
 # zsh
 !.zshenv
