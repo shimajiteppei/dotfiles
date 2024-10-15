@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-brew install curl git
+brew install curl git cmake
 
 cd $(dirname $0)
 if ./installer.sh; then

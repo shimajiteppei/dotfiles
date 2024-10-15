@@ -2,6 +2,7 @@
   editor = nano
   # TODO: replace to XDG_CONFIG_HOME
   hooksPath = ~/.config/git/hooks
+  ignoreCase = false
 
 [user]
   useConfigOnly = true
