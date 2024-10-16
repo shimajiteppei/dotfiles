@@ -15,11 +15,6 @@ __DOTFILES_OS_NAME=macos
     ##
     export EDITOR=nano
     export VISUAL=nano
-
-    ##
-    ## alias
-    ##
-    alias rm='mv -t $HOME/.Trash/'
 }
 
 

@@ -22,11 +22,6 @@ export PATH
     ##
     export EDITOR=nano
     export VISUAL=nano
-
-    ##
-    ## alias
-    ##
-    alias rm='mv -t $XDG_DATA_HOME/Trash/files/'
 }
 
 
