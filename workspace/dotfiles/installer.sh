@@ -37,8 +37,11 @@ zsh $ZDOTDIR/.zshrc
 zsh -ic 'command -v cargo'
 zsh -ic 'command -v navi'
 zsh -ic 'command -v uv'
+zsh -ic 'uv python install'
 zsh -ic 'command -v sdk'
+zsh -ic 'sdk install java'
 zsh -ic 'command -v volta'
+zsh -ic 'volta install node'
 
 
 # exit

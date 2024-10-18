@@ -14,7 +14,7 @@ export PIP_REQUIRE_VIRTUALENV=true
     ##
     ## install
     ##
-    command -v uv >/dev/null || cargo install --git https://github.com/astral-sh/uv uv
+    command -v uv >/dev/null || (curl -LsSf https://astral.sh/uv/install.sh | sh)
 
     ##
     ## init
@@ -27,6 +27,7 @@ export PIP_REQUIRE_VIRTUALENV=true
 ## update
 ##
 "__dotfiles_widget-update-${__DOTFILES_WIDGET_NAME}"() {
+    command -v uv >/dev/null || uv self update
 }
 
 
