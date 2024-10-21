@@ -32,6 +32,7 @@ export PATH
     sudo apt update
     sudo apt upgrade -y
     sudo snap refresh
+    flatpak update
 }
 
 
