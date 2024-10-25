@@ -5,10 +5,18 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  test_ubuntu24:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@main
       - name: Installer Test
         run: |
           ./workspace/dotfiles/installer.ubuntu_24.sh
+
+  test_macos14:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@main
+      - name: Installer Test
+        run: |
+          ./workspace/dotfiles/installer.mac.sh
