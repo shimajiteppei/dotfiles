@@ -10,4 +10,4 @@ modmap:
   - name: CAPSLOCK, CTRL-L
     remap:
       CAPSLOCK: LEFTCTRL
-      LEFTCTRL: F13
+      LEFTCTRL: F14

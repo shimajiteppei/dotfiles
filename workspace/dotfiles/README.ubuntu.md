@@ -19,7 +19,7 @@
     - [ ] xremap
         - [ ] `systemctl --user enable --now xremap`
         - [ ] capslock -> ctrl
-        - [ ] ctrl -> F13
+        - [ ] ctrl -> F14
     - [ ] 入力ソース変更ショートカットをF13に設定
 - [ ] フォント設定
     - [ ] UDEV Gothic https://github.com/yuru7/udev-gothic のインストール
