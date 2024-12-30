@@ -1,17 +1,29 @@
-[core]
-  editor = nano
-  # TODO: replace to XDG_CONFIG_HOME
-  hooksPath = ~/.config/git/hooks
-  ignoreCase = false
-
 [user]
   useConfigOnly = true
 
-[push]
-	autoSetupRemote = true
+[core]
+  editor = nano
+  hooksPath = ~/.config/git/hooks
+  fileMode = true
+  ignoreCase = false
 
 [init]
 	defaultBranch = main
 
 [submodule]
   recurse = true
+
+[push]
+  autoSetupRemote = true
+
+[merge]
+  conflictstyle = zdiff3
+
+[interactive]
+  # Do not set core.pager = delta for other CLI commands. If you want to show diff with delta, use `git diff | delta`.
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  dark = true
+  line-numbers = true

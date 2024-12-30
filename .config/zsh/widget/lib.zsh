@@ -5,6 +5,8 @@ __DOTFILES_WIDGET_LIST=(
     python
     nodejs
     java
+    abbr
+    delta
 )
 
 for widget in $__DOTFILES_WIDGET_LIST; do
