@@ -14,12 +14,19 @@ alias rm='rm -i'
 alias mkdir='mkdir -p'
 
 alias g='git'
-alias gs='git status'
+# to avoid running ghostscript by type error
+alias gs='git status --short'
 # https://zsh-abbr.olets.dev/commands.html#git
+alias git s='status --short'
 alias git ap='add -p'
-alias git b='branch'
-alias git ch='checkout'
-alias git clone='clone --recurse-submodules'
 alias git cm='commit -m'
+alias git ca='commit --amend'
+alias git ch='checkout'
+alias git re='reset'
+# disable switch/restore
+alias git switch='checkout'
+alias git restore='reset'
+# override
+alias git clone='clone --recurse-submodules'
 alias git config='config --local'
-alias git s='status'
+alias git pull='fetch --all --tags --prune --prune-tags && git pull --rebase --autostash'
