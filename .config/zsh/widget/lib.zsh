@@ -1,4 +1,4 @@
-__DOTFILES_WIDGET_LIST=(
+__DOTFILES_WIDGET_LIST=($__DOTFILES_WIDGET_LIST
     docker
     rust
     navi

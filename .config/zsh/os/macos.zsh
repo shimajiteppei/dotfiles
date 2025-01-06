@@ -4,6 +4,15 @@ __DOTFILES_OS_NAME=macos
 ##
 ## env (envs must be loaded in main thread)
 ##
+path=($path
+    $HOME/.local/bin
+)
+typeset -U path PATH
+export PATH
+
+__DOTFILES_WIDGET_LIST=($__DOTFILES_WIDGET_LIST
+    colima
+)
 
 
 ##
