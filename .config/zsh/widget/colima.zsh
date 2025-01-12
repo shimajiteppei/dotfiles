@@ -2,23 +2,13 @@ __DOTFILES_WIDGET_NAME=colima
 
 
 ##
-## env (envs must be loaded in main thread)
-##
-path=($path
-    
-)
-typeset -U path PATH
-export PATH
-
-
-##
 ## init
 ##
 "__dotfiles_widget-init-${__DOTFILES_WIDGET_NAME}"() {
     ##
     ## init
     ##
-    if ! $(colima status); then
+    if ! $(colima status > /dev/null); then
         # colima start --arch x86_64 --cpu 4 --memory 12 --disk 20
         colima start --cpu 4 --memory 12 --disk 20 --arch aarch64 --vm-type=vz --vz-rosetta --mount-type virtiofs
     fi
@@ -29,12 +19,16 @@ export PATH
 ## update
 ##
 "__dotfiles_widget-update-${__DOTFILES_WIDGET_NAME}"() {
-    # colima
+    # force delete colima vm
     colima delete
     pkill -f colima
-    rm -rf $HOME/.config/colima
-    mkdir -p $HOME/.config/colima/_templates
-    cat <<EOF > $HOME/.config/zsh/widget/default.yaml
+
+    # reset colima config dir
+    local __COLIMA_HOME=$HOME/.config/colima
+    local __COLIMA_TEMPLATE=$COLIMA_HOME/_templates
+    rm -rf $__COLIMA_HOME
+    mkdir -p $__COLIMA_TEMPLATE
+    cat <<EOF > $__COLIMA_TEMPLATE/default.yaml 
 # colima template setting
 cpu: 4
 disk: 20
@@ -84,11 +78,13 @@ provision:
       openssl s_client -showcerts -connect gcr.io:443 < /dev/null | awk "/-----BEGIN CERTIFICATE-----/,/-----END CERTIFICATE-----/ {if (/-----BEGIN CERTIFICATE-----/) {if (out) close(out); out=\"certificate_mitm_\" ++n \".pem\"}; print > out}"
       update-ca-certificates --fresh
 EOF
-    ln -sf $HOME/.config/zsh/widget/default.yaml $HOME/.config/colima/_templates/default.yaml 
+
+    # reset docker symlink
     brew unlink docker && brew link docker
-    docker buildx install
-    # colima start --arch x86_64 --cpu 4 --memory 12 --disk 20
+
+    # start colima vm
     colima start --cpu 4 --memory 12 --disk 20 --arch aarch64 --vm-type=vz --vz-rosetta --mount-type virtiofs
+    # colima start --arch x86_64 --cpu 4 --memory 12 --disk 20
 }
 
 
