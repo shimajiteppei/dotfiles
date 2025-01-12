@@ -11,4 +11,5 @@ __dotfiles_core-update() {
     cd -
 
     zinit self-update
+    zinit update
 }
