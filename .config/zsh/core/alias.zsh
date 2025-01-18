@@ -2,8 +2,23 @@
 ## alias
 ##
 
-alias alias='abbr --session --global --quieter --force'
 abbr clear-session
+
+
+# there may have been a breaking change in v6
+local __ABBR_MAJOR_VERSION=$(abbr --version | awk '{print $3}' | awk -F. '{print $1}')
+if [[ $__ABBR_MAJOR_VERSION -ge 6 ]]; then
+    alias() {
+        abbr --session --regular --quieter --force $@
+        abbr --session --global --quieter --force $@
+    }
+else
+    alias() {
+        abbr --session --global --quieter --force $@
+    }
+fi
+unset __ABBR_MAJOR_VERSION
+
 
 alias history="history 0"
 alias grep='grep --color=auto'
@@ -17,16 +32,16 @@ alias g='git'
 # to avoid running ghostscript by type error
 alias gs='git status --short'
 # https://zsh-abbr.olets.dev/commands.html#git
-alias git s='status --short'
-alias git ap='add -p'
-alias git cm='commit -m'
-alias git ca='commit --amend'
-alias git ch='checkout'
-alias git re='reset'
+alias 'git s'='git status --short'
+alias 'git ap'='git add -p'
+alias 'git b'='git branch'
+alias 'git cm'='git commit -m'
+alias 'git ch'='git checkout'
+alias 'git re'='git reset'
 # disable switch/restore
-alias git switch='checkout'
-alias git restore='reset'
+alias 'git switch'='git checkout'
+alias 'git restore'='git reset'
 # override
-alias git clone='clone --recurse-submodules'
-alias git config='config --local'
-alias git pull='fetch --all --tags --prune --prune-tags && git pull --rebase --autostash'
+alias 'git clone'='git clone --recurse-submodules'
+alias 'git config'='git config --local'
+alias 'git pull'='git fetch --all --tags --prune --prune-tags && git pull --rebase --autostash'
