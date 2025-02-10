@@ -9,8 +9,8 @@ __DOTFILES_WIDGET_NAME=colima
     ## init
     ##
     if ! $(colima status > /dev/null); then
-        # colima start --arch x86_64 --cpu 4 --memory 12 --disk 20
-        colima start --cpu 4 --memory 12 --disk 20 --arch aarch64 --vm-type=vz --vz-rosetta --mount-type virtiofs
+        # colima start --arch x86_64 --cpu 4 --memory 12 --disk 40
+        colima start --cpu 4 --memory 12 --disk 40 --arch aarch64 --vm-type=vz --vz-rosetta --mount-type virtiofs
     fi
 }
 
@@ -25,7 +25,7 @@ __DOTFILES_WIDGET_NAME=colima
 
     # reset colima config dir
     local __COLIMA_HOME=$HOME/.config/colima
-    local __COLIMA_TEMPLATE=$COLIMA_HOME/_templates
+    local __COLIMA_TEMPLATE=$__COLIMA_HOME/_templates
     rm -rf $__COLIMA_HOME
     mkdir -p $__COLIMA_TEMPLATE
     cat <<EOF > $__COLIMA_TEMPLATE/default.yaml 
@@ -83,8 +83,8 @@ EOF
     brew unlink docker && brew link docker
 
     # start colima vm
-    colima start --cpu 4 --memory 12 --disk 20 --arch aarch64 --vm-type=vz --vz-rosetta --mount-type virtiofs
-    # colima start --arch x86_64 --cpu 4 --memory 12 --disk 20
+    colima start --cpu 4 --memory 12 --disk 40 --arch aarch64 --vm-type=vz --vz-rosetta --mount-type virtiofs
+    # colima start --arch x86_64 --cpu 4 --memory 12 --disk 40
 }
 
 
