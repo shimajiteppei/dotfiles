@@ -10,6 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@main
       - name: Installer Test
+        shell: sh
+        env:
+          TERM: xterm-256color
         run: |
           ./workspace/dotfiles/installer.ubuntu_24.sh
 
@@ -18,5 +21,8 @@ jobs:
     steps:
       - uses: actions/checkout@main
       - name: Installer Test
+        shell: sh
+        env:
+          TERM: xterm-256color
         run: |
           ./workspace/dotfiles/installer.mac.sh
