@@ -14,6 +14,14 @@ export PATH
 
 
 ##
+## extra widgets
+##
+__DOTFILES_WIDGET_LIST=($__DOTFILES_WIDGET_LIST
+    docker
+)
+
+
+##
 ## init
 ##
 "__dotfiles_os-init-${__DOTFILES_OS_NAME}"() {

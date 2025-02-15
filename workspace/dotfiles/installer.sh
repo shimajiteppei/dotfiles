@@ -34,15 +34,33 @@ zsh $ZDOTDIR/.zshrc
 
 
 # check if widgets are installed
+# docker
+zsh -ic 'command -v docker'
+zsh -ic 'docker --version'
+# rust
 zsh -ic 'command -v cargo'
+zsh -ic 'cargo --version'
+# navi
 zsh -ic 'command -v navi'
+zsh -ic 'navi --version'
+# python
 zsh -ic 'command -v uv'
+zsh -ic 'uv --version'
 zsh -ic 'uv python install'
-zsh -ic 'command -v sdk'
-zsh -ic 'sdk install java'
+# nodejs
 zsh -ic 'command -v volta'
+zsh -ic 'volta --version'
 zsh -ic 'volta install node'
-
+# java
+zsh -ic 'command -v sdk'
+zsh -ic 'sdk version'
+zsh -ic 'sdk install java'
+# abbr
+zsh -ic 'command -v abbr'
+zsh -ic 'abbr --version'
+# delta
+zsh -ic 'command -v delta'
+zsh -ic 'delta --version'
 
 # exit
 set +ex

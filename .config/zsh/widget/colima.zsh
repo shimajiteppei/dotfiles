@@ -8,6 +8,9 @@ __DOTFILES_WIDGET_NAME=colima
     ##
     ## init
     ##
+    command -v docker >/dev/null || brew install docker
+    command -v colima >/dev/null || brew install colima
+
     if ! $(colima status > /dev/null); then
         # colima start --arch x86_64 --cpu 4 --memory 12 --disk 40
         colima start --cpu 4 --memory 12 --disk 40 --arch aarch64 --vm-type=vz --vz-rosetta --mount-type virtiofs

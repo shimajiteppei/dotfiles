@@ -10,6 +10,10 @@ path=($path
 typeset -U path PATH
 export PATH
 
+
+##
+## extra widgets
+##
 __DOTFILES_WIDGET_LIST=($__DOTFILES_WIDGET_LIST
     colima
 )
