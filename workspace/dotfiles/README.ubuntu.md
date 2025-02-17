@@ -43,6 +43,7 @@
     - [ ] アカウント・設定同期
 - [ ] Multipass
 - [ ] Docker
+- [ ] TailScale
 - [ ] SSH鍵引き継ぎ
 - [ ] Zsh
     - [ ] dotfiles展開

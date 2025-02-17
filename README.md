@@ -81,6 +81,7 @@ Here is how to use `test.sh`:
 ```shell
 # run installation test with multipass VM
 $HOME/workspace/dotfiles/test.sh
+multipass exec dotfile-test -- zsh
 
 # delete installation test VM
 $HOME/workspace/dotfiles/test.sh clear
