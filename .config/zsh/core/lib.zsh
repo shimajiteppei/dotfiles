@@ -1,6 +1,7 @@
 __dotfiles_core-init() {
     ##
     ## init zinit
+    ## https://zdharma-continuum.github.io/zinit/wiki/
     ##
     source "$XDG_DATA_HOME/zinit/zinit.git/zinit.zsh"
     autoload -Uz _zinit
@@ -14,11 +15,10 @@ __dotfiles_core-init() {
 
     ##
     ## load scripts
-    ## do not use p10k instant prompt
     ##
+    # do not use p10k instant prompt
     source $ZDOTDIR/core/p10k.zsh
-    source $ZDOTDIR/core/history.zsh
-    source $ZDOTDIR/core/completion.zsh
+    source $ZDOTDIR/core/tweaks.zsh
 }
 
 __dotfiles_core-update() {
