@@ -6,6 +6,7 @@ __DOTFILES_OS_NAME=macos
 ##
 path=($path
     $HOME/.local/bin
+    $HOME/.rd/bin
 )
 typeset -U path PATH
 export PATH
@@ -15,7 +16,6 @@ export PATH
 ## extra widgets
 ##
 __DOTFILES_WIDGET_LIST=($__DOTFILES_WIDGET_LIST
-    colima
 )
 
 
