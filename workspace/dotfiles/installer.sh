@@ -35,8 +35,8 @@ zsh $ZDOTDIR/.zshrc
 
 # check if widgets are installed
 # docker
-zsh -ic 'command -v docker'
-zsh -ic 'docker --version'
+# zsh -ic 'command -v docker'
+# zsh -ic 'docker --version'
 # rust
 zsh -ic 'command -v cargo'
 zsh -ic 'cargo --version'
