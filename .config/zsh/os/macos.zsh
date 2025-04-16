@@ -7,6 +7,7 @@ __DOTFILES_OS_NAME=macos
 path=($path
     $HOME/.local/bin
     $HOME/.rd/bin
+    $(brew --prefix coreutils)/libexec/gnubin
 )
 typeset -U path PATH
 export PATH
