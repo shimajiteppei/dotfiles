@@ -1,41 +1,23 @@
 % git
 
-# shallow clone
-git clone --depth=1 --recurse-submodules -b <branch_name> <repository> <clone_directory>
-
 # skip file without gitignore
 git update-index --skip-worktree <changed_files>
-
-# list skipped file
-git ls-files -v | grep ^S
 
 # unskip file without gitignore
 git update-index --no-skip-worktree <skipped_files>
 
-# init with branch name main
-git init --initial-branch main
+# recover reset hard by reflog
+git reset --hard <reflog_hist>
 
-# colored graph log
-git log --graph --decorate --all --oneline
-
-# Remove commits from local repository (destroy changes)
-git reset --hard HEAD~<number_of_commits>
-
-# Remove commits from local repository (keep changes)
-git reset --soft HEAD~<number_of_commits>
-
-# Diff two files with git-diff
+# diff
 git diff --no-index <file1> <file2>
 
-# Delete merged branches
+# delete merged branches
 git branch --format='%(refname:short)' --merged | grep -vE '^(main|master)$' | xargs --no-run-if-empty git branch -d
 
-# Delete untracked, ignored file
-git clean -nxf "$(git rev-parse --show-toplevel)/**"
-
-# Get root directory
-git rev-parse --show-toplevel
-
+# delete untracked files
+git clean -df "$(git rev-parse --show-toplevel)/**"
 
 $ changed_files: git status --untracked-files=all -s --porcelain | awk '{print $2}'
 $ skipped_files: git ls-files -v | grep ^S | awk '{print $2}'
+$ reflog_hist: git reflog --no-decorate --- --column 2 --delimiter ' ' --map 'sed 's/.$//''

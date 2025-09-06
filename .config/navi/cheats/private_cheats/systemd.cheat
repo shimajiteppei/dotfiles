@@ -1,9 +1,4 @@
-% var__service
-$ service: systemctl --all --full --legend=no list-unit-files --- --header-lines 1 --column 1
-
-
 % systemd
-@ var__service
 
 # show unit file
 systemctl cat <service>
@@ -19,3 +14,5 @@ sudo systemctl disable --now <service>
 
 # reload unit file changes
 sudo systemctl daemon-reload
+
+$ service: systemctl --all --full --legend=no list-unit-files --- --header-lines 1 --column 1
