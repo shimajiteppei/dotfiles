@@ -16,9 +16,6 @@
 [push]
   autoSetupRemote = true
 
-[merge]
-  conflictstyle = zdiff3
-
 [interactive]
   # Do not set core.pager = delta for other CLI commands. If you want to show diff with delta, use `git diff | delta`.
   diffFilter = delta --color-only
