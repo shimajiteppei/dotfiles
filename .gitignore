@@ -64,3 +64,7 @@
 !.config/mozc/ibus_config.textproto
 !.config/guake
 !.config/guake/config
+# https://github.com/RPDJF/dotfiles/blob/master/.myconfig/ressources/HubApps
+!.config/microsoft-edge-beta
+!.config/microsoft-edge-beta/Default
+!.config/microsoft-edge-beta/Default/HubApps
