@@ -29,6 +29,9 @@ __DOTFILES_WIDGET_LIST=($__DOTFILES_WIDGET_LIST
     ##
     export EDITOR=nano
     export VISUAL=nano
+
+    autoload -Uz compinit
+    compinit
 }
 
 
