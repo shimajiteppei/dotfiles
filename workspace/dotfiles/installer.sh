@@ -7,9 +7,9 @@ cd $HOME
 # ensure dotfiles installed
 test -d $HOME/.git || (
     cd $HOME
-    git init --initial-branch main
+    git init --initial-branch dotfiles
     git remote add origin https://github.com/shimajiteppei/dotfiles.git
-    git pull origin main
+    git pull origin dotfiles
     git submodule update --init --remote --recursive
 )
 
