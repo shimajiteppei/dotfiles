@@ -12,7 +12,7 @@ __DOTFILES_WIDGET_NAME=abbr
     ##
     abbr clear-session
     alias() {
-        abbr --session --regular --quieter $@
+        abbr --session --regular --quieter --force $@
     }
 
 
