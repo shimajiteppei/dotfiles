@@ -1,4 +1,15 @@
 ##
+## zsh profiling
+## ```shell
+## DOTFILES_PROFILE=1 zsh -i -c exit
+## ```
+##
+[[ $DOTFILES_PROFILE == 1 ]] && zmodload zsh/zprof
+__dotfiles_profile() {
+  [[ $DOTFILES_PROFILE == 1 ]] && zprof
+}
+
+##
 ## load scripts
 ##
 source $ZDOTDIR/core/lib.zsh
@@ -28,3 +39,5 @@ __dotfiles_widget-init
 ...check() {
     $XDG_DATA_HOME/xdg-ninja/xdg-ninja.sh
 }
+
+__dotfiles_profile
