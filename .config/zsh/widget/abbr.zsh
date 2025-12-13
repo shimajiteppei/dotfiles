@@ -5,23 +5,15 @@ __DOTFILES_WIDGET_NAME=abbr
 ## init
 ##
 "__dotfiles_widget-init-${__DOTFILES_WIDGET_NAME}"() {
+    export ABBR_AUTOLOAD=0
+
     ##
     ## init abbr
     ##
     abbr clear-session
-    # there may have been a breaking change in v6
-    local __ABBR_MAJOR_VERSION=$(abbr --version | awk '{print $3}' | awk -F. '{print $1}')
-    if [[ $__ABBR_MAJOR_VERSION -ge 6 ]]; then
-        alias() {
-            abbr --session --regular --quieter --force $@
-            abbr --session --global --quieter --force $@
-        }
-    else
-        alias() {
-            abbr --session --global --quieter --force $@
-        }
-    fi
-    unset __ABBR_MAJOR_VERSION
+    alias() {
+        abbr --session --regular --quieter $@
+    }
 
 
     ##
