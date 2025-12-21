@@ -53,6 +53,8 @@
 !workspace/project/.gitkeep
 !workspace/tmp
 !workspace/tmp/.gitkeep
+!workspace/archive
+!workspace/archive/README.md
 
 # ubuntu specific files
 !.config/systemd

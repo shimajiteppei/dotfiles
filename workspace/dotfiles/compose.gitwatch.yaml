@@ -1,0 +1,10 @@
+services:
+  gitwatch:
+    image: ghcr.io/gitwatch/gitwatch:latest
+    container_name: dotfiles-gitwatch
+    restart: always
+    user: "${UID:-1000}:${GID:-1000}"
+    volumes:
+      - ~/workspace/archive:/app/archive
+      - ~/workspace/dotfiles/gitwatch.entrypoint.sh:/app/gitwatch.entrypoint.sh:ro
+    entrypoint: sh /app/gitwatch.entrypoint.sh
