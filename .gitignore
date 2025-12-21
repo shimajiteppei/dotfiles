@@ -55,6 +55,8 @@
 !workspace/tmp/.gitkeep
 !workspace/archive
 !workspace/archive/README.md
+!workspace/archive/.gitattributes
+!workspace/archive/start-archive.sh
 
 # ubuntu specific files
 !.config/systemd
