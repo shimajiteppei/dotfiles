@@ -10,6 +10,7 @@
 !.vscode
 !.vscode/settings.json
 !.vscode/extensions.json
+!.vscode/export-extension.sh
 
 # git
 !.github
