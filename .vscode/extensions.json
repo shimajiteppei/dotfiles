@@ -1,6 +1,8 @@
 {
     "recommendations": [
         "coolbear.systemd-unit-file",
+        "github.copilot",
+        "github.copilot-chat",
         "github.vscode-github-actions",
         "github.vscode-pull-request-github",
         "google.gemini-cli-vscode-ide-companion",
@@ -16,7 +18,6 @@
         "ms-vscode.hexeditor",
         "ms-vscode.live-server",
         "ms-vscode.remote-explorer",
-        "ms-windows-ai-studio.windows-ai-studio",
         "redhat.vscode-yaml",
         "tailscale.vscode-tailscale"
     ]
