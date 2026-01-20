@@ -43,7 +43,7 @@ __DOTFILES_WIDGET_NAME=abbr
     # override
     alias 'git clone'='git clone --recurse-submodules'
     alias 'git config'='git config --local'
-    alias 'git pull'='git fetch --all --tags --prune --prune-tags && git pull --rebase --autostash'
+    alias 'git pull'='git fetch --all --tags --prune --prune-tags --force && git pull --rebase --autostash'
 
 
     ##
