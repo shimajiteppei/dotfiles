@@ -25,6 +25,8 @@
     - [ ] UDEV Gothic https://github.com/yuru7/udev-gothic のインストール
     - [ ] gnome tweaks
         - [ ] システムフォントの変更
+- [ ] ファイアウォール `sudo ufw enable`
+- [ ] 音声 `systemctl --user --now enable wireplumber`
 
 ## アプリケーション
 
@@ -47,8 +49,3 @@
 - [ ] SSH鍵引き継ぎ
 - [ ] Zsh
     - [ ] dotfiles展開
-- [ ] 各種言語
-    - [ ] SDKMAN
-    - [ ] Rustup, Cargo
-    - [ ] Volta
-    - [ ] uv
