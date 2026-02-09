@@ -49,6 +49,10 @@
 !.config/navi/cheats
 !.config/navi/cheats/**
 
+# python
+!.config/uv
+!.config/uv/uv.toml
+
 # workspace
 !workspace/project
 !workspace/project/.gitkeep

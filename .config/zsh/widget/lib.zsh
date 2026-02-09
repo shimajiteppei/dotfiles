@@ -1,11 +1,11 @@
 __DOTFILES_WIDGET_LIST=($__DOTFILES_WIDGET_LIST
     rust
-    navi
     python
     nodejs
     java
-    abbr
+    navi
     delta
+    abbr
 )
 
 for widget in $__DOTFILES_WIDGET_LIST; do
