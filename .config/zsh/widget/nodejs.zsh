@@ -4,9 +4,9 @@ __DOTFILES_WIDGET_NAME=nodejs
 ##
 ## env (envs must be loaded in main thread)
 ##
-export VOLTA_HOME="$HOME/.volta"
+export VITE_PLUS_HOME="$HOME/.vite-plus"
 path=($path
-    $VOLTA_HOME/bin
+    $VITE_PLUS_HOME/bin
 )
 typeset -U path PATH
 export PATH
@@ -19,7 +19,8 @@ export PATH
     ##
     ## install
     ##
-    command -v volta >/dev/null || (curl https://get.volta.sh | bash)
+    command -v vp >/dev/null || (curl -fsSL https://vite.plus | bash)
+    command -v vp >/dev/null || vp env on
 }
 
 
@@ -27,7 +28,7 @@ export PATH
 ## update
 ##
 "__dotfiles_widget-update-${__DOTFILES_WIDGET_NAME}"() {
-    command -v volta >/dev/null && (curl https://get.volta.sh | bash)
+    command -v vp >/dev/null && vp upgrade
 }
 
 
@@ -35,10 +36,7 @@ export PATH
 ## clean
 ##
 "__dotfiles_widget-clean-${__DOTFILES_WIDGET_NAME}"() {
-    local VOLTA_TOOL_IMAGE=$VOLTA_HOME/tools/image
-    volta list node --format plain | grep -v 'default' | awk -F ' |@' '{print $3}' | xargs -I{} rm -rf $VOLTA_TOOL_IMAGE/node/{}
-    volta list npm --format plain | grep -v 'default' | awk -F ' |@' '{print $3}' | xargs -I{} rm -rf $VOLTA_TOOL_IMAGE/npm/{}
-    volta list yarn --format plain | grep -v 'default' | awk -F ' |@' '{print $3}' | xargs -I{} rm -rf $VOLTA_TOOL_IMAGE/yarn/{}
+    command -v vp >/dev/null && vp implode
 }
 
 
