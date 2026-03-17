@@ -49,3 +49,5 @@
 - [ ] SSH鍵引き継ぎ
 - [ ] Zsh
     - [ ] dotfiles展開
+- [ ] VMWare Workstation Proをインストール
+    - [ ] Windows10 VMを作成
