@@ -48,9 +48,9 @@ zsh -ic 'command -v uv'
 zsh -ic 'uv --version'
 zsh -ic 'uv python install'
 # nodejs
-zsh -ic 'command -v volta'
-zsh -ic 'volta --version'
-zsh -ic 'volta install node'
+zsh -ic 'command -v vp'
+zsh -ic 'vp --version'
+zsh -ic 'vp env install lts'
 # java
 zsh -ic 'command -v sdk'
 zsh -ic 'sdk version'
