@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-brew install curl git cmake coreutils
+brew install curl git cmake coreutils bash
 
 cd $(dirname $0)
 if ./installer.sh; then
