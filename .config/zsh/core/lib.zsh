@@ -8,6 +8,7 @@ __dotfiles_core-init() {
     (( ${+_comps} )) && _comps[zinit]=_zinit
     zinit light-mode for \
         romkatv/powerlevel10k \
+        romkatv/zsh-defer \
         zdharma-continuum/history-search-multi-word \
         zdharma-continuum/fast-syntax-highlighting \
         zsh-users/zsh-completions \

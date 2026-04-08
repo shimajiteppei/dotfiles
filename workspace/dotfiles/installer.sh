@@ -38,29 +38,29 @@ zsh $ZDOTDIR/.zshrc
 # zsh -ic 'command -v docker'
 # zsh -ic 'docker --version'
 # rust
-zsh -ic 'command -v cargo'
-zsh -ic 'cargo --version'
+zsh -ic 'sleep 1 && command -v cargo'
+zsh -ic 'sleep 1 && cargo --version'
 # navi
-zsh -ic 'command -v navi'
-zsh -ic 'navi --version'
+zsh -ic 'sleep 1 && command -v navi'
+zsh -ic 'sleep 1 && navi --version'
 # python
-zsh -ic 'command -v uv'
-zsh -ic 'uv --version'
-zsh -ic 'uv python install'
+zsh -ic 'sleep 1 && command -v uv'
+zsh -ic 'sleep 1 && uv --version'
+zsh -ic 'sleep 1 && uv python install'
 # nodejs
-zsh -ic 'command -v vp'
-zsh -ic 'vp --version'
-zsh -ic 'vp env install lts'
+zsh -ic 'sleep 1 && command -v vp'
+zsh -ic 'sleep 1 && vp --version'
+zsh -ic 'sleep 1 && vp env install lts'
 # java
-zsh -ic 'command -v sdk'
-zsh -ic 'sdk version'
-zsh -ic 'sdk install java'
+zsh -ic 'sleep 1 && command -v sdk'
+zsh -ic 'sleep 1 && sdk version'
+zsh -ic 'sleep 1 && sdk install java'
 # abbr
-zsh -ic 'command -v abbr'
-zsh -ic 'abbr --version'
+zsh -ic 'sleep 1 && command -v abbr'
+zsh -ic 'sleep 1 && abbr --version'
 # delta
-zsh -ic 'command -v delta'
-zsh -ic 'delta --version'
+zsh -ic 'sleep 1 && command -v delta'
+zsh -ic 'sleep 1 && delta --version'
 
 # exit
 set +ex

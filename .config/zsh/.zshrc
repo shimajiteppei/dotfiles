@@ -21,7 +21,12 @@ source $ZDOTDIR/widget/lib.zsh
 ##
 __dotfiles_core-init
 __dotfiles_os-init
-__dotfiles_widget-init
+# defer loading widgets on interactive shell
+if [[ -o interactive && -t 0 ]]; then
+    zsh-defer __dotfiles_widget-init
+else
+    __dotfiles_widget-init
+fi
 
 ##
 ## define tasks
