@@ -1,4 +1,6 @@
 name: Installer Test
+permissions:
+  contents: read
 
 on:
   push:
