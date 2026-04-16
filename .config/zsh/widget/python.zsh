@@ -21,12 +21,12 @@ export PATH
     ##
     ## install
     ##
-    command -v uv >/dev/null || (curl -LsSf https://astral.sh/uv/install.sh | sh)
+    command -v uv >/dev/null || { curl -LsSf https://astral.sh/uv/install.sh | sh ;}
 
     ##
     ## init
     ##
-    eval "$(uv generate-shell-completion zsh)"
+    command -v uv >/dev/null && eval "$(uv generate-shell-completion zsh)"
 
     ##
     ## create global venv

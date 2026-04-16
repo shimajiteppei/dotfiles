@@ -1,12 +1,11 @@
-__DOTFILES_WIDGET_NAME=nodejs
+__DOTFILES_WIDGET_NAME=ai
 
 
 ##
 ## env (envs must be loaded in main thread)
 ##
-export VITE_PLUS_HOME="$HOME/.vite-plus"
 path=($path
-    $VITE_PLUS_HOME/bin
+    $HOME/.opencode/bin
 )
 typeset -U path PATH
 export PATH
@@ -16,11 +15,8 @@ export PATH
 ## init
 ##
 "__dotfiles_widget-init-${__DOTFILES_WIDGET_NAME}"() {
-    ##
-    ## install
-    ##
-    command -v vp >/dev/null || { curl -fsSL https://vite.plus | bash ;}
-    command -v vp >/dev/null || vp env on
+    command -v ollama >/dev/null || { curl -fsSL https://ollama.com/install.sh | sh ;}
+    command -v gemini >/dev/null || npm install -g @google/gemini-cli
 }
 
 
@@ -28,7 +24,6 @@ export PATH
 ## update
 ##
 "__dotfiles_widget-update-${__DOTFILES_WIDGET_NAME}"() {
-    command -v vp >/dev/null && vp upgrade
 }
 
 
@@ -36,7 +31,6 @@ export PATH
 ## clean
 ##
 "__dotfiles_widget-clean-${__DOTFILES_WIDGET_NAME}"() {
-    command -v vp >/dev/null && vp implode
 }
 
 
