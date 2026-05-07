@@ -29,6 +29,7 @@ export PATH
 ##
 "__dotfiles_widget-update-${__DOTFILES_WIDGET_NAME}"() {
     command -v vp >/dev/null && vp upgrade
+    command -v vp >/dev/null && vp update --global
 }
 
 

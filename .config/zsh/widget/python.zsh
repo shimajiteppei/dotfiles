@@ -39,7 +39,8 @@ export PATH
 ## update
 ##
 "__dotfiles_widget-update-${__DOTFILES_WIDGET_NAME}"() {
-    command -v uv >/dev/null || uv self update
+    command -v uv >/dev/null && uv self update
+    command -v uv >/dev/null && uv tool upgrade --all
 }
 
 
