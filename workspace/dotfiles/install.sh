@@ -1,7 +1,21 @@
 #!/usr/bin/env sh
-# common installation process on zsh
 set -ex
 cd $HOME
+
+
+
+##
+## preinstall os libs
+##
+__DOTFILES_OSTYPE="$(uname -s)"
+
+if [ "$__DOTFILES_OSTYPE" = Linux ]; then
+    sudo apt install -y curl git bash zsh cmake build-essential pkg-config libssl-dev zip unzip
+elif [ "$__DOTFILES_OSTYPE" = Darwin ]; then
+    brew install curl git bash zsh cmake coreutils </dev/null
+fi
+
+unset __DOTFILES_OSTYPE
 
 
 
@@ -20,7 +34,7 @@ test -d $HOME/.git || {
 }
 
 # for test
-if test ${__DOTFILES_TEST_MODE:-0} -gt 0; then
+if [ ${__DOTFILES_TEST_MODE:-0} -gt 0 ]; then
     echo 'export ZDOTDIR="$HOME/Home/.config/zsh"' >> $HOME/.zshenv
 fi
 # load env

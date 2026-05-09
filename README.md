@@ -1,4 +1,4 @@
-# 💠 shimajiteppei's dotfiles 💠
+# dotfiles
 
 My dotfiles for Ubuntu, MacOS and WSL.
 
@@ -6,49 +6,9 @@ My dotfiles for Ubuntu, MacOS and WSL.
 
 ## Installation
 
-### 1. install git
-
-for Ubuntu, WSL
 ```shell
-sudo apt install git
+curl -fsSL https://raw.githubusercontent.com/shimajiteppei/dotfiles/refs/heads/dotfiles/workspace/dotfiles/install.sh | sh
 ```
-for MacOS
-```shell
-brew install git
-```
-
-### 2. pull git repository to home directory
-
-```shell
-cd $HOME
-test -d $HOME/.git || {
-    cd $HOME;
-    git init --initial-branch dotfiles;
-    git remote add origin https://github.com/shimajiteppei/dotfiles.git;
-    git pull origin dotfiles;
-    git submodule update --init --remote --recursive;
-    git config --local user.name shimajiteppei;
-    git config --local user.email shimajiteppei@gmail.com;
-}
-```
-
-### 3. run installer
-
-for Ubuntu and WSL, run [Ubuntu installer](./workspace/dotfiles/installer.ubuntu_24.sh).
-
-```shell
-$HOME/workspace/dotfiles/installer.ubuntu_24.sh
-```
-
-for MacOS, run [MacOS installer](./workspace/dotfiles/installer.mac.sh).
-
-```shell
-$HOME/workspace/dotfiles/installer.mac.sh
-```
-
-### ! NOTICE !
-
-DO NOT run `chsh -s $(which zsh)`.
 
 
 
@@ -57,6 +17,9 @@ DO NOT run `chsh -s $(which zsh)`.
 ```shell
 # update system and dotfiles itself
 ...update
+
+# open vscode workspace
+...edit
 
 # clean widget environment
 ...clean
@@ -69,43 +32,50 @@ DO NOT run `chsh -s $(which zsh)`.
 
 ## Develop
 
-### Editor
-
-Please use VSCode as your editor. Configuration files are located under the `.vscode` directory.
-
-### Testing
-
-The main installation process is implemented in [.config/zsh/.zshrc](./.config/zsh/.zshrc).
-
-Tests for `.zshrc` are provided in [test.sh](./workspace/dotfiles/test.sh) and the [GitHub workflow](./.github/workflows/test-install.yaml).
-
+run mise task
 ```shell
 cd $HOME/workspace/dotfiles
 mise run
 ```
 
-### Structure
+directory structure
 
-These dotfiles follow the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/latest/). Basic configuration files are stored under `XDG_CONFIG_HOME`, which is `$HOME/.config`.
-
-We use [zsh](https://zsh.sourceforge.io/Doc/) in this dotfiles. The `.zshrc` file is located at [.config/zsh/.zshrc](./.config/zsh/.zshrc) and primarily serves two functions:
-
-- Provisioning
-    - Installation and initial setup of various features
-- Task Runner
-    - Update and initialization processes for various features
-
-Since `.zshrc` performs many tasks, it is managed by splitting it into files for each function. The directory is divided into three main sections:
-
-- core
-    - Processes related to zsh and zsh plugins
-- os
-    - OS-specific processes
-- widget
-    - Processes related to applications (mainly language toolchains)
-
-For the basic coding style, please refer to `lib.zsh` and `template.zsh`.
-
+```console
+$  git ls-tree -dr --name-only HEAD | tree --fromfile
+.
+├── .config
+│   ├── git
+│   │   └── hooks
+│   ├── guake
+│   ├── microsoft-edge
+│   │   └── Default
+│   ├── microsoft-edge-beta
+│   │   └── Default
+│   ├── mozc
+│   ├── systemd
+│   │   └── user
+│   ├── xremap
+│   └── zsh
+│       ├── core
+│       ├── os
+│       └── widget
+├── .github
+│   └── workflows
+├── .local
+│   └── share
+│       ├── fzf
+│       ├── xdg-ninja
+│       └── zinit
+│           └── zinit.git
+├── .ssh
+│   └── conf.d
+├── .vscode
+└── workspace
+    ├── archive
+    ├── dotfiles
+    ├── project
+    └── tmp
+```
 
 
 ## Personal checklist for setting up a new machine (日本語)
