@@ -17,6 +17,13 @@ jobs:
           TERM: xterm-256color
         run: |
           ./workspace/dotfiles/installer.ubuntu_24.sh
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: ubuntu-24.04__installer-test-logs
+          path: workspace/dotfiles/installer.log
+          retention-days: 1
+          archive: false
 
   test_macos-latest:
     runs-on: macos-latest
@@ -28,3 +35,10 @@ jobs:
           TERM: xterm-256color
         run: |
           ./workspace/dotfiles/installer.mac.sh
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: macos-latest__installer-test-logs
+          path: workspace/dotfiles/installer.log
+          retention-days: 1
+          archive: false
