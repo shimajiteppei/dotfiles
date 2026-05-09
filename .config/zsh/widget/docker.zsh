@@ -1,16 +1,14 @@
 __DOTFILES_WIDGET_NAME=docker
 
 
-"__dotfiles_widget-install-docker"() {
-    curl -fsSL https://get.docker.com | sudo sh
-    sudo usermod -aG docker $USER
-}
-
 ##
 ## init
 ##
 "__dotfiles_widget-init-${__DOTFILES_WIDGET_NAME}"() {
-    command -v docker >/dev/null || "__dotfiles_widget-install-docker"
+    command -v docker >/dev/null || {
+        curl -fsSL https://get.docker.com | sudo sh;
+        sudo usermod -aG docker $USER;
+    }
 }
 
 

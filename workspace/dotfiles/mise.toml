@@ -1,0 +1,15 @@
+[tasks.installer-test]
+run = "./test.sh"
+description = "run installer test"
+
+[tasks.installer-test-vm-debug]
+run = "multipass exec dotfile-test -- zsh"
+description = "debug vm instance of installer test"
+
+[tasks.installer-test-vm-clear]
+run = "./test.sh clear"
+description = "clear vm instance of installer test"
+
+[tasks.zsh-profile]
+run = "__DOTFILES_PROFILE_MODE=1 zsh -ic exit"
+description = "run zsh profiling"

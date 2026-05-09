@@ -20,7 +20,7 @@ else
 
     # run test
     multipass start $__DOTFILES_TEST_VM
-    multipass exec $__DOTFILES_TEST_VM -- /bin/bash -c 'export __DOTFILES_MODE=test; sh /home/ubuntu/Home/workspace/dotfiles/installer.ubuntu_24.sh'
+    multipass exec $__DOTFILES_TEST_VM -- /bin/bash -c '__DOTFILES_TEST_MODE=1 sh /home/ubuntu/Home/workspace/dotfiles/installer.ubuntu_24.sh'
 fi
 
 # exit

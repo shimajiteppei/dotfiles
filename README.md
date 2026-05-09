@@ -21,12 +21,15 @@ brew install git
 
 ```shell
 cd $HOME
-test -d .git || (
-    git init --initial-branch dotfiles
-    git remote add origin https://github.com/shimajiteppei/dotfiles.git
-    git pull origin dotfiles
-    git submodule update --init --remote --recursive
-)
+test -d $HOME/.git || {
+    cd $HOME;
+    git init --initial-branch dotfiles;
+    git remote add origin https://github.com/shimajiteppei/dotfiles.git;
+    git pull origin dotfiles;
+    git submodule update --init --remote --recursive;
+    git config --local user.name shimajiteppei;
+    git config --local user.email shimajiteppei@gmail.com;
+}
 ```
 
 ### 3. run installer
@@ -76,15 +79,9 @@ The main installation process is implemented in [.config/zsh/.zshrc](./.config/z
 
 Tests for `.zshrc` are provided in [test.sh](./workspace/dotfiles/test.sh) and the [GitHub workflow](./.github/workflows/test-install.yaml).
 
-Here is how to use `test.sh`:
-
 ```shell
-# run installation test with multipass VM
-$HOME/workspace/dotfiles/test.sh
-multipass exec dotfile-test -- zsh
-
-# delete installation test VM
-$HOME/workspace/dotfiles/test.sh clear
+cd $HOME/workspace/dotfiles
+mise run
 ```
 
 ### Structure

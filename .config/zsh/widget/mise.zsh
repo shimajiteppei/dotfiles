@@ -23,7 +23,7 @@ export PATH
     ##
     ## init
     ##
-    command -v mise >/dev/null && eval "$($HOME/.local/bin/mise activate zsh)"
+    command -v mise >/dev/null && eval "$(mise activate zsh)"
 }
 
 

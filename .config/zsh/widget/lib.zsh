@@ -6,7 +6,6 @@ __DOTFILES_WIDGET_LIST=($__DOTFILES_WIDGET_LIST
     delta
     abbr
     mise
-    ai
 )
 
 for widget in $__DOTFILES_WIDGET_LIST; do

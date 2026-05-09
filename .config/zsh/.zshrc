@@ -1,13 +1,8 @@
 ##
 ## zsh profiling
-## ```shell
-## DOTFILES_PROFILE=1 zsh -i -c exit
-## ```
 ##
-[[ $DOTFILES_PROFILE == 1 ]] && zmodload zsh/zprof
-__dotfiles_profile() {
-  [[ $DOTFILES_PROFILE == 1 ]] && zprof
-}
+[[ $__DOTFILES_DEBUG_MODE > 1 ]] && set -x
+[[ $__DOTFILES_PROFILE_MODE > 0 ]] && zmodload zsh/zprof
 
 ##
 ## load scripts
@@ -22,10 +17,10 @@ source $ZDOTDIR/widget/lib.zsh
 __dotfiles_core-init
 __dotfiles_os-init
 # defer loading widgets on interactive shell
-if [[ -o interactive && -t 0 ]]; then
-    zsh-defer __dotfiles_widget-init
-else
+if [[ $__DOTFILES_DEBUG_MODE > 0 ]]; then
     __dotfiles_widget-init
+else
+    zsh-defer __dotfiles_widget-init
 fi
 
 ##
@@ -45,4 +40,11 @@ fi
     $XDG_DATA_HOME/xdg-ninja/xdg-ninja.sh
 }
 
-__dotfiles_profile
+
+##
+## post init hooks
+##
+# end zsh profiling
+[[ $__DOTFILES_PROFILE_MODE > 0 ]] && zprof
+# force return code
+return 0
