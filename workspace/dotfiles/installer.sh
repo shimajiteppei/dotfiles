@@ -42,9 +42,6 @@ zsh $ZDOTDIR/.zshrc
 # rust
 zsh -ic 'sleep 1 && command -v cargo'
 zsh -ic 'sleep 1 && cargo --version'
-# navi
-zsh -ic 'sleep 1 && command -v navi'
-zsh -ic 'sleep 1 && navi --version'
 # python
 zsh -ic 'sleep 1 && command -v uv'
 zsh -ic 'sleep 1 && uv --version'

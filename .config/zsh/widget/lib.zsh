@@ -3,7 +3,6 @@ __DOTFILES_WIDGET_LIST=($__DOTFILES_WIDGET_LIST
     python
     nodejs
     java
-    navi
     delta
     abbr
     mise
