@@ -44,12 +44,6 @@
 !.config/zsh/**/
 !.config/zsh/**/*.zsh
 
-# navi
-!.config/navi
-!.config/navi/config.yaml
-!.config/navi/cheats
-!.config/navi/cheats/**
-
 # python
 !.config/uv
 !.config/uv/uv.toml
