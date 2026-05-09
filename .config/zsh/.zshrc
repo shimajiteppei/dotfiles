@@ -40,6 +40,10 @@ fi
     $XDG_DATA_HOME/xdg-ninja/xdg-ninja.sh
 }
 
+...edit() {
+    code $HOME/.vscode/dotfiles.code-workspace
+}
+
 
 ##
 ## post init hooks

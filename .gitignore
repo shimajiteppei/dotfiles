@@ -11,6 +11,7 @@
 !.vscode/settings.json
 !.vscode/extensions.json
 !.vscode/export-extension.sh
+!.vscode/dotfiles.code-workspace
 
 # git
 !.github
