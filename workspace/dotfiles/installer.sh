@@ -11,6 +11,8 @@ test -d $HOME/.git || (
     git remote add origin https://github.com/shimajiteppei/dotfiles.git
     git pull origin dotfiles
     git submodule update --init --remote --recursive
+    git config --local user.name shimajiteppei
+    git config --local user.email shimajiteppei@gmail.com
 )
 
 
