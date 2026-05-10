@@ -1,4 +1,4 @@
-__DOTFILES_WIDGET_NAME=nodejs
+__dotfiles_widget_name=nodejs
 
 
 ##
@@ -15,30 +15,37 @@ export PATH
 ##
 ## init
 ##
-"__dotfiles_widget-init-${__DOTFILES_WIDGET_NAME}"() {
+"__dotfiles_widget-init-${__dotfiles_widget_name}"() {
     ##
     ## install
     ##
-    command -v vp >/dev/null || { curl -fsSL https://vite.plus | bash ;}
-    command -v vp >/dev/null || vp env on
+    if ! command -v vp >/dev/null; then
+        curl -fsSL https://vite.plus | bash
+        vp env on
+        vp env install lts
+    fi
 }
 
 
 ##
 ## update
 ##
-"__dotfiles_widget-update-${__DOTFILES_WIDGET_NAME}"() {
-    command -v vp >/dev/null && vp upgrade
-    command -v vp >/dev/null && vp update --global
+"__dotfiles_widget-update-${__dotfiles_widget_name}"() {
+    if command -v vp >/dev/null; then
+        vp upgrade
+        vp update --global
+    fi
 }
 
 
 ##
 ## clean
 ##
-"__dotfiles_widget-clean-${__DOTFILES_WIDGET_NAME}"() {
-    command -v vp >/dev/null && vp implode
+"__dotfiles_widget-clean-${__dotfiles_widget_name}"() {
+    if command -v vp >/dev/null; then
+        vp implode
+    fi
 }
 
 
-unset __DOTFILES_WIDGET_NAME
+unset __dotfiles_widget_name

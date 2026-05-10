@@ -1,4 +1,4 @@
-__DOTFILES_WIDGET_NAME=java
+__dotfiles_widget_name=java
 
 
 ##
@@ -10,33 +10,41 @@ export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"
 ##
 ## init
 ##
-"__dotfiles_widget-init-${__DOTFILES_WIDGET_NAME}"() {
+"__dotfiles_widget-init-${__dotfiles_widget_name}"() {
     ##
     ## install
     ##
-    [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] || { curl -s "https://get.sdkman.io?rcupdate=false" | bash ;}
+    if ! [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]]; then
+        curl -s "https://get.sdkman.io?rcupdate=false" | bash
+    fi
 
     ##
     ## init
     ##
-    [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+    if [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]]; then
+        source "$SDKMAN_DIR/bin/sdkman-init.sh"
+    fi
 }
 
 
 ##
 ## update
 ##
-"__dotfiles_widget-update-${__DOTFILES_WIDGET_NAME}"() {
-    command -v sdk >/dev/null && sdk selfupdate
+"__dotfiles_widget-update-${__dotfiles_widget_name}"() {
+    if command -v sdk >/dev/null; then
+        sdk selfupdate
+    fi
 }
 
 
 ##
 ## clean
 ##
-"__dotfiles_widget-clean-${__DOTFILES_WIDGET_NAME}"() {
-    sdk flush
+"__dotfiles_widget-clean-${__dotfiles_widget_name}"() {
+    if command -v sdk >/dev/null; then
+        sdk flush
+    fi
 }
 
 
-unset __DOTFILES_WIDGET_NAME
+unset __dotfiles_widget_name

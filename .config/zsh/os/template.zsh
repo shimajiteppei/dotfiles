@@ -1,4 +1,4 @@
-__DOTFILES_OS_NAME=template
+__dotfiles_os_name=template
 
 
 ##
@@ -14,7 +14,7 @@ export PATH
 ##
 ## init
 ##
-"__dotfiles_os-init-${__DOTFILES_OS_NAME}"() {
+"__dotfiles_os-init-${__dotfiles_os_name}"() {
     ##
     ## init
     ##
@@ -28,8 +28,8 @@ export PATH
 ##
 ## update
 ##
-"__dotfiles_os-update-${__DOTFILES_OS_NAME}"() {
+"__dotfiles_os-update-${__dotfiles_os_name}"() {
 }
 
 
-unset __DOTFILES_OS_NAME
+unset __dotfiles_os_name

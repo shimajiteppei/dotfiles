@@ -1,4 +1,4 @@
-__DOTFILES_WIDGET_NAME=template
+__dotfiles_widget_name=template
 
 
 ##
@@ -14,7 +14,7 @@ export PATH
 ##
 ## init
 ##
-"__dotfiles_widget-init-${__DOTFILES_WIDGET_NAME}"() {
+"__dotfiles_widget-init-${__dotfiles_widget_name}"() {
     ##
     ## install
     ##
@@ -32,15 +32,15 @@ export PATH
 ##
 ## update
 ##
-"__dotfiles_widget-update-${__DOTFILES_WIDGET_NAME}"() {
+"__dotfiles_widget-update-${__dotfiles_widget_name}"() {
 }
 
 
 ##
 ## clean
 ##
-"__dotfiles_widget-clean-${__DOTFILES_WIDGET_NAME}"() {
+"__dotfiles_widget-clean-${__dotfiles_widget_name}"() {
 }
 
 
-unset __DOTFILES_WIDGET_NAME
+unset __dotfiles_widget_name

@@ -1,30 +1,32 @@
-__DOTFILES_WIDGET_NAME=docker
+__dotfiles_widget_name=docker
 
 
 ##
 ## init
 ##
-"__dotfiles_widget-init-${__DOTFILES_WIDGET_NAME}"() {
-    command -v docker >/dev/null || {
-        curl -fsSL https://get.docker.com | sudo sh;
-        sudo usermod -aG docker $USER;
-    }
+"__dotfiles_widget-init-${__dotfiles_widget_name}"() {
+    if ! command -v docker >/dev/null; then
+        curl -fsSL https://get.docker.com | sudo sh
+        sudo usermod -aG docker $USER
+    fi
 }
 
 
 ##
 ## update
 ##
-"__dotfiles_widget-update-${__DOTFILES_WIDGET_NAME}"() {
+"__dotfiles_widget-update-${__dotfiles_widget_name}"() {
 }
 
 
 ##
 ## clean
 ##
-"__dotfiles_widget-clean-${__DOTFILES_WIDGET_NAME}"() {
-    docker system prune --volumes --all
+"__dotfiles_widget-clean-${__dotfiles_widget_name}"() {
+    if command -v docker >/dev/null; then
+        docker system prune --volumes --all
+    fi
 }
 
 
-unset __DOTFILES_WIDGET_NAME
+unset __dotfiles_widget_name

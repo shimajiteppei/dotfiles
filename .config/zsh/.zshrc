@@ -10,6 +10,9 @@
 source $ZDOTDIR/core/lib.zsh
 source $ZDOTDIR/os/lib.zsh
 source $ZDOTDIR/widget/lib.zsh
+[[ $__DOTFILES_DEBUG_MODE > 1 ]] && echo $__dotfiles_os_type
+[[ $__DOTFILES_DEBUG_MODE > 1 ]] && echo $__dotfiles_widget_list
+
 
 ##
 ## init
@@ -34,10 +37,6 @@ fi
 
 ...clean() {
     __dotfiles_widget-clean
-}
-
-...check() {
-    $XDG_DATA_HOME/xdg-ninja/xdg-ninja.sh
 }
 
 ...edit() {

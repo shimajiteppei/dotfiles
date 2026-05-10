@@ -1,4 +1,4 @@
-__DOTFILES_WIDGET_NAME=python
+__dotfiles_widget_name=python
 
 
 ##
@@ -17,38 +17,48 @@ export PATH
 ##
 ## init
 ##
-"__dotfiles_widget-init-${__DOTFILES_WIDGET_NAME}"() {
+"__dotfiles_widget-init-${__dotfiles_widget_name}"() {
     ##
     ## install
     ##
-    command -v uv >/dev/null || { curl -LsSf https://astral.sh/uv/install.sh | sh ;}
+    if ! command -v uv >/dev/null; then
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+        uv python install
+    fi
 
     ##
     ## init
     ##
-    command -v uv >/dev/null && eval "$(uv generate-shell-completion zsh)"
+    if command -v uv >/dev/null; then
+        eval "$(uv generate-shell-completion zsh)"
+    fi
 
     ##
     ## create global venv
     ##
-    [[ -s "$XDG_DATA_HOME/uv-venv" ]] || uv venv "$XDG_DATA_HOME/uv-venv"
+    if ! [[ -s "$XDG_DATA_HOME/uv-venv" ]]; then
+        uv venv "$XDG_DATA_HOME/uv-venv"
+    fi
 }
 
 
 ##
 ## update
 ##
-"__dotfiles_widget-update-${__DOTFILES_WIDGET_NAME}"() {
-    command -v uv >/dev/null && uv self update
-    command -v uv >/dev/null && uv tool upgrade --all
+"__dotfiles_widget-update-${__dotfiles_widget_name}"() {
+    if command -v uv >/dev/null; then
+        uv self update
+        uv tool upgrade --all
+        uv python upgrade
+    fi
 }
 
 
 ##
 ## clean
 ##
-"__dotfiles_widget-clean-${__DOTFILES_WIDGET_NAME}"() {
+"__dotfiles_widget-clean-${__dotfiles_widget_name}"() {
 }
 
 
-unset __DOTFILES_WIDGET_NAME
+unset __dotfiles_widget_name

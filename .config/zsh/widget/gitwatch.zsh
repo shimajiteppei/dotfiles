@@ -1,27 +1,31 @@
-__DOTFILES_WIDGET_NAME=gitwatch
+__dotfiles_widget_name=gitwatch
 
 
 ##
 ## init
 ##
-"__dotfiles_widget-init-${__DOTFILES_WIDGET_NAME}"() {
-    docker inspect -f '{{.State.Running}}' dotfiles-gitwatch || ${HOME}/workspace/dotfiles/gitwatch.sh start
+"__dotfiles_widget-init-${__dotfiles_widget_name}"() {
+    if ! docker inspect -f '{{.State.Running}}' dotfiles-gitwatch; then
+        ${HOME}/workspace/dotfiles/gitwatch.sh start
+    fi
 }
 
 
 ##
 ## update
 ##
-"__dotfiles_widget-update-${__DOTFILES_WIDGET_NAME}"() {
+"__dotfiles_widget-update-${__dotfiles_widget_name}"() {
 }
 
 
 ##
 ## clean
 ##
-"__dotfiles_widget-clean-${__DOTFILES_WIDGET_NAME}"() {
-    docker inspect -f '{{.State.Running}}' dotfiles-gitwatch && ${HOME}/workspace/dotfiles/gitwatch.sh down
+"__dotfiles_widget-clean-${__dotfiles_widget_name}"() {
+    if docker inspect -f '{{.State.Running}}' dotfiles-gitwatch; then
+        ${HOME}/workspace/dotfiles/gitwatch.sh down
+    fi
 }
 
 
-unset __DOTFILES_WIDGET_NAME
+unset __dotfiles_widget_name

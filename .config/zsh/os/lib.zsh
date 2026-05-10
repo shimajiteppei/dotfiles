@@ -1,15 +1,20 @@
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    __DOTFILES_OS_TYPE=macos
-elif [[ "$OSTYPE" == "linux"* ]]; then
-    __DOTFILES_OS_TYPE=ubuntu
-else
-    __DOTFILES_OS_TYPE=template
-fi
+case "$OSTYPE" in
+    darwin*)
+        __dotfiles_os_type=macos
+        ;;
+    linux*)
+        __dotfiles_os_type=ubuntu
+        ;;
+    *)
+        __dotfiles_os_type=template
+        ;;
+esac
 
-source $ZDOTDIR/os/${__DOTFILES_OS_TYPE}.zsh
+
+source $ZDOTDIR/os/${__dotfiles_os_type}.zsh
 __dotfiles_os-init() {
-    "__dotfiles_os-init-${__DOTFILES_OS_TYPE}"
+    "__dotfiles_os-init-${__dotfiles_os_type}"
 }
 __dotfiles_os-update() {
-    "__dotfiles_os-update-${__DOTFILES_OS_TYPE}"
+    "__dotfiles_os-update-${__dotfiles_os_type}"
 }

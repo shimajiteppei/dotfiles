@@ -2,6 +2,9 @@
 
 My dotfiles for Ubuntu, MacOS and WSL.
 
+This repository manages `$HOME` directly as a git working tree on the `dotfiles` branch.
+It installs zsh, shell plugins, and development toolchains.
+
 
 
 ## Installation
@@ -23,9 +26,6 @@ curl -fsSL https://raw.githubusercontent.com/shimajiteppei/dotfiles/refs/heads/d
 
 # clean widget environment
 ...clean
-
-# check XDG based directory
-...check
 ```
 
 

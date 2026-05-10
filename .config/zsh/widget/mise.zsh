@@ -1,4 +1,4 @@
-__DOTFILES_WIDGET_NAME=mise
+__dotfiles_widget_name=mise
 
 
 ##
@@ -14,31 +14,35 @@ export PATH
 ##
 ## init
 ##
-"__dotfiles_widget-init-${__DOTFILES_WIDGET_NAME}"() {
+"__dotfiles_widget-init-${__dotfiles_widget_name}"() {
     ##
     ## install
     ##
-    command -v mise >/dev/null || { curl https://mise.run | sh ;}
+    if ! command -v mise >/dev/null; then
+        curl https://mise.run | sh
+    fi
 
     ##
     ## init
     ##
-    command -v mise >/dev/null && eval "$(mise activate zsh)"
+    if command -v mise >/dev/null; then
+        eval "$(mise activate zsh)"
+    fi
 }
 
 
 ##
 ## update
 ##
-"__dotfiles_widget-update-${__DOTFILES_WIDGET_NAME}"() {
+"__dotfiles_widget-update-${__dotfiles_widget_name}"() {
 }
 
 
 ##
 ## clean
 ##
-"__dotfiles_widget-clean-${__DOTFILES_WIDGET_NAME}"() {
+"__dotfiles_widget-clean-${__dotfiles_widget_name}"() {
 }
 
 
-unset __DOTFILES_WIDGET_NAME
+unset __dotfiles_widget_name

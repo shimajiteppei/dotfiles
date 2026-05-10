@@ -1,4 +1,4 @@
-__DOTFILES_OS_NAME=macos
+__dotfiles_os_name=macos
 
 
 ##
@@ -16,14 +16,14 @@ export PATH
 ##
 ## extra widgets
 ##
-__DOTFILES_WIDGET_LIST=($__DOTFILES_WIDGET_LIST
+__dotfiles_widget_list=($__dotfiles_widget_list
 )
 
 
 ##
 ## init
 ##
-"__dotfiles_os-init-${__DOTFILES_OS_NAME}"() {
+"__dotfiles_os-init-${__dotfiles_os_name}"() {
     ##
     ## init
     ##
@@ -35,9 +35,9 @@ __DOTFILES_WIDGET_LIST=($__DOTFILES_WIDGET_LIST
 ##
 ## update
 ##
-"__dotfiles_os-update-${__DOTFILES_OS_NAME}"() {
+"__dotfiles_os-update-${__dotfiles_os_name}"() {
     brew upgrade
 }
 
 
-unset __DOTFILES_OS_NAME
+unset __dotfiles_os_name

@@ -1,4 +1,4 @@
-__DOTFILES_OS_NAME=ubuntu
+__dotfiles_os_name=ubuntu
 
 
 ##
@@ -16,7 +16,7 @@ export PATH
 ##
 ## extra widgets
 ##
-__DOTFILES_WIDGET_LIST=($__DOTFILES_WIDGET_LIST
+__dotfiles_widget_list=($__dotfiles_widget_list
     docker
 )
 
@@ -24,7 +24,7 @@ __DOTFILES_WIDGET_LIST=($__DOTFILES_WIDGET_LIST
 ##
 ## init
 ##
-"__dotfiles_os-init-${__DOTFILES_OS_NAME}"() {
+"__dotfiles_os-init-${__dotfiles_os_name}"() {
     ##
     ## init
     ##
@@ -36,7 +36,7 @@ __DOTFILES_WIDGET_LIST=($__DOTFILES_WIDGET_LIST
 ##
 ## update
 ##
-"__dotfiles_os-update-${__DOTFILES_OS_NAME}"() {
+"__dotfiles_os-update-${__dotfiles_os_name}"() {
     sudo apt update
     sudo apt upgrade -y
     sudo snap refresh
@@ -44,4 +44,4 @@ __DOTFILES_WIDGET_LIST=($__DOTFILES_WIDGET_LIST
 }
 
 
-unset __DOTFILES_OS_NAME
+unset __dotfiles_os_name

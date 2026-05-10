@@ -1,10 +1,10 @@
-__DOTFILES_WIDGET_NAME=abbr
+__dotfiles_widget_name=abbr
 
 
 ##
 ## init
 ##
-"__dotfiles_widget-init-${__DOTFILES_WIDGET_NAME}"() {
+"__dotfiles_widget-init-${__dotfiles_widget_name}"() {
     export ABBR_AUTOLOAD=0
 
     ##
@@ -44,6 +44,8 @@ __DOTFILES_WIDGET_NAME=abbr
     alias 'git clone'='git clone --recurse-submodules'
     alias 'git config'='git config --local'
     alias 'git pull'='git fetch --all --tags --prune --prune-tags --force && git pull --rebase --autostash'
+    # cargo
+    alias 'cargo install'='cargo binstall --no-confirm --disable-telemetry'
 
 
     ##
@@ -88,15 +90,15 @@ __DOTFILES_WIDGET_NAME=abbr
 ##
 ## update
 ##
-"__dotfiles_widget-update-${__DOTFILES_WIDGET_NAME}"() {
+"__dotfiles_widget-update-${__dotfiles_widget_name}"() {
 }
 
 
 ##
 ## clean
 ##
-"__dotfiles_widget-clean-${__DOTFILES_WIDGET_NAME}"() {
+"__dotfiles_widget-clean-${__dotfiles_widget_name}"() {
 }
 
 
-unset __DOTFILES_WIDGET_NAME
+unset __dotfiles_widget_name

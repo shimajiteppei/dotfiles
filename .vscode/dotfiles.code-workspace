@@ -1,13 +1,13 @@
 {
 	"folders": [
 		{
-			"path": ".."
-		},
-		{
 			"path": "../workspace/dotfiles"
 		},
 		{
 			"path": "../.config/zsh"
-		}
+		},
+		{
+			"path": ".."
+		},
 	]
 }

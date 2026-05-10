@@ -1,9 +1,10 @@
-__DOTFILES_WIDGET_NAME=rust
+__dotfiles_widget_name=rust
 
 
 ##
 ## env (envs must be loaded in main thread)
 ##
+export BINSTALL_DISABLE_TELEMETRY=true
 path=($path
     $HOME/.cargo/bin
 )
@@ -14,29 +15,40 @@ export PATH
 ##
 ## init
 ##
-"__dotfiles_widget-init-${__DOTFILES_WIDGET_NAME}"() {
+"__dotfiles_widget-init-${__dotfiles_widget_name}"() {
     ##
     ## install
     ##
-    command -v cargo >/dev/null || { curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y ;}
-    command -v cargo-install-update >/dev/null || cargo install cargo-update
+    if ! command -v cargo >/dev/null; then
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    fi
+        if ! command -v cargo-binstall >/dev/null; then
+        curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+    fi
+    if ! command -v cargo-install-update >/dev/null; then
+        cargo binstall --no-confirm --disable-telemetry cargo-update
+    fi
 }
 
 
 ##
 ## update
 ##
-"__dotfiles_widget-update-${__DOTFILES_WIDGET_NAME}"() {
-    command -v rustup >/dev/null && rustup update
-    command -v cargo-install-update >/dev/null && cargo install-update --all
+"__dotfiles_widget-update-${__dotfiles_widget_name}"() {
+    if command -v rustup >/dev/null; then
+        rustup update
+    fi
+    if command -v cargo-install-update >/dev/null; then
+        cargo install-update --all
+    fi
 }
 
 
 ##
 ## clean
 ##
-"__dotfiles_widget-clean-${__DOTFILES_WIDGET_NAME}"() {
+"__dotfiles_widget-clean-${__dotfiles_widget_name}"() {
 }
 
 
-unset __DOTFILES_WIDGET_NAME
+unset __dotfiles_widget_name

@@ -1,4 +1,4 @@
-__DOTFILES_WIDGET_NAME=ai
+__dotfiles_widget_name=ai
 
 
 ##
@@ -14,24 +14,34 @@ export PATH
 ##
 ## init
 ##
-"__dotfiles_widget-init-${__DOTFILES_WIDGET_NAME}"() {
-    command -v ollama >/dev/null || { curl -fsSL https://ollama.com/install.sh | sh ;}
-    command -v gemini >/dev/null || npm install -g @google/gemini-cli
+"__dotfiles_widget-init-${__dotfiles_widget_name}"() {
+    if ! command -v ollama >/dev/null; then
+        curl -fsSL https://ollama.com/install.sh | sh
+    fi
+    if ! command -v gemini >/dev/null; then
+        npm install -g @google/gemini-cli
+    fi
+    if ! command -v claude >/dev/null; then
+        curl -fsSL https://claude.ai/install.sh | bash
+    fi
+    if ! command v codex >/dev/null; then
+        npm i -g @openai/codex
+    fi
 }
 
 
 ##
 ## update
 ##
-"__dotfiles_widget-update-${__DOTFILES_WIDGET_NAME}"() {
+"__dotfiles_widget-update-${__dotfiles_widget_name}"() {
 }
 
 
 ##
 ## clean
 ##
-"__dotfiles_widget-clean-${__DOTFILES_WIDGET_NAME}"() {
+"__dotfiles_widget-clean-${__dotfiles_widget_name}"() {
 }
 
 
-unset __DOTFILES_WIDGET_NAME
+unset __dotfiles_widget_name
