@@ -35,6 +35,9 @@ export PATH
 ## update
 ##
 "__dotfiles_widget-update-${__dotfiles_widget_name}"() {
+    if command -v mise >/dev/null; then
+        mise self-update -y
+    fi
 }
 
 
