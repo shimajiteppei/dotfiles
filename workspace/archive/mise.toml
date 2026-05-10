@@ -1,4 +1,5 @@
 [tasks."archive:create"]
+depends = "archive:watch-start"
 usage = '''
 arg "<archive_name>" help="archive name"
 '''
@@ -14,3 +15,7 @@ description = "watch archive directory with gitwatch"
 [tasks."archive:watch-stop"]
 run = "./config/gitwatch.sh down"
 description = "stop gitwatch"
+
+[tasks."archive:open-workspace"]
+run = "code ./config/archive.code-workspace"
+description = "open archive workspace in VSCode"
