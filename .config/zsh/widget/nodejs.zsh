@@ -43,7 +43,7 @@ export PATH
 ##
 "__dotfiles_widget-clean-${__dotfiles_widget_name}"() {
     if command -v vp >/dev/null; then
-        vp implode
+        vp implode -y
     fi
 }
 

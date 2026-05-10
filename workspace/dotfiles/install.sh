@@ -7,9 +7,16 @@ cd $HOME
 ## decide installer mode
 ##
 __dotfiles_installer_enable_test=0
+__dotfiles_installer_enable_test_local=0
+
 case "$DOTFILES_INSTALLER_MODE" in
-    test)
+    test_ci)
         __dotfiles_installer_enable_test=1
+        __dotfiles_installer_enable_test_local=0
+        ;;
+    test_local)
+        __dotfiles_installer_enable_test=1
+        __dotfiles_installer_enable_test_local=1
         ;;
 esac
 
@@ -20,6 +27,7 @@ starting dotfiles installer
 
 DOTFILES_INSTALLER_MODE=$DOTFILES_INSTALLER_MODE
 __dotfiles_installer_enable_test=$__dotfiles_installer_enable_test
+__dotfiles_installer_enable_test_local=$__dotfiles_installer_enable_test_local
 ################################################################
 EOF
 
@@ -55,7 +63,7 @@ if ! test -d $HOME/.git; then
     git config --local user.email shimajiteppei@gmail.com;
 fi
 
-if [ $__dotfiles_installer_enable_test -gt 0 ]; then
+if [ $__dotfiles_installer_enable_test_local -gt 0 ]; then
     # override zsh dir for test
     echo 'export ZDOTDIR="$HOME/Home/.config/zsh"' >> $HOME/.zshenv
 fi

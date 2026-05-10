@@ -14,6 +14,7 @@ jobs:
         shell: sh
         env:
           TERM: xterm-256color
+          DOTFILES_INSTALLER_MODE: test_ci
         run: |
           sudo apt install curl
           curl -fsSL https://raw.githubusercontent.com/shimajiteppei/dotfiles/refs/heads/dotfiles/workspace/dotfiles/install.sh | sh
@@ -25,6 +26,7 @@ jobs:
         shell: sh
         env:
           TERM: xterm-256color
+          DOTFILES_INSTALLER_MODE: test_ci
         run: |
           brew install curl
           curl -fsSL https://raw.githubusercontent.com/shimajiteppei/dotfiles/refs/heads/dotfiles/workspace/dotfiles/install.sh | sh

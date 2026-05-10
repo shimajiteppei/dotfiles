@@ -23,7 +23,7 @@ case "$1" in
 
         # run test
         multipass start $__dotfiles_test_vm
-        multipass exec $__dotfiles_test_vm -- /bin/bash -c 'DOTFILES_INSTALLER_MODE=test sh /home/ubuntu/Home/workspace/dotfiles/install.sh'
+        multipass exec $__dotfiles_test_vm -- /bin/bash -c 'DOTFILES_INSTALLER_MODE=test_local sh /home/ubuntu/Home/workspace/dotfiles/install.sh'
 		;;
 esac
 

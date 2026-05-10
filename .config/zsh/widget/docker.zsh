@@ -24,7 +24,7 @@ __dotfiles_widget_name=docker
 ##
 "__dotfiles_widget-clean-${__dotfiles_widget_name}"() {
     if command -v docker >/dev/null; then
-        docker system prune --volumes --all
+        docker system prune --force --volumes --all
     fi
 }
 
