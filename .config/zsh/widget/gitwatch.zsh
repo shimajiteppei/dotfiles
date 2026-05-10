@@ -28,4 +28,11 @@ __dotfiles_widget_name=gitwatch
 }
 
 
+##
+## test
+##
+"__dotfiles_widget-test-${__dotfiles_widget_name}"() {
+}
+
+
 unset __dotfiles_widget_name

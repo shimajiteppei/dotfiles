@@ -101,4 +101,13 @@ __dotfiles_widget_name=abbr
 }
 
 
+##
+## test
+##
+"__dotfiles_widget-test-${__dotfiles_widget_name}"() {
+    command -v abbr
+    abbr --version
+}
+
+
 unset __dotfiles_widget_name

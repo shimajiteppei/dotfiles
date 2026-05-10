@@ -44,4 +44,22 @@ export PATH
 }
 
 
+##
+## test
+##
+"__dotfiles_widget-test-${__dotfiles_widget_name}"() {
+    command -v ollama
+    ollama version
+
+    command -v gemini
+    gemini version
+
+    command -v claude
+    claude version
+
+    command -v codex
+    codex version
+}
+
+
 unset __dotfiles_widget_name

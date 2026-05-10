@@ -29,4 +29,13 @@ __dotfiles_widget_name=docker
 }
 
 
+##
+## test
+##
+"__dotfiles_widget-test-${__dotfiles_widget_name}"() {
+    command -v docker
+    docker --version
+}
+
+
 unset __dotfiles_widget_name

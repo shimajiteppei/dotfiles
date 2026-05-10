@@ -29,3 +29,9 @@ __dotfiles_widget-clean() {
         "__dotfiles_widget-clean-${widget}"
     done
 }
+
+__dotfiles_widget-test() {
+    for widget in $__dotfiles_widget_list; do
+        "__dotfiles_widget-test-${widget}"
+    done
+}

@@ -45,4 +45,13 @@ export PATH
 }
 
 
+##
+## test
+##
+"__dotfiles_widget-test-${__dotfiles_widget_name}"() {
+    command -v mise
+    mise --version
+}
+
+
 unset __dotfiles_widget_name

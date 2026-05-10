@@ -3,6 +3,27 @@ set -ex
 cd $HOME
 
 
+##
+## decide installer mode
+##
+__dotfiles_installer_enable_test=0
+case "$DOTFILES_INSTALLER_MODE" in
+    test)
+        __dotfiles_installer_enable_test=1
+        ;;
+esac
+
+cat <<EOF
+################################################################
+[dotfiles log]
+starting dotfiles installer
+
+DOTFILES_INSTALLER_MODE=$DOTFILES_INSTALLER_MODE
+__dotfiles_installer_enable_test=$__dotfiles_installer_enable_test
+################################################################
+EOF
+
+
 
 ##
 ## preinstall os libs
@@ -33,66 +54,102 @@ if ! test -d $HOME/.git; then
     git config --local user.name shimajiteppei;
     git config --local user.email shimajiteppei@gmail.com;
 fi
-# for test
-if [ ${__DOTFILES_TEST_MODE:-0} -gt 0 ]; then
+
+if [ $__dotfiles_installer_enable_test -gt 0 ]; then
+    # override zsh dir for test
     echo 'export ZDOTDIR="$HOME/Home/.config/zsh"' >> $HOME/.zshenv
 fi
-# load env manually
-test -e $HOME/.zshenv
-. $HOME/.zshenv
-
-test -e $XDG_DATA_HOME/fzf/.git
-test -e $XDG_DATA_HOME/xdg-ninja/.git
-test -e $XDG_DATA_HOME/zinit/zinit.git/.git
-
 
 
 
 ###
 ### init zsh
 ###
-__DOTFILES_DEBUG_MODE=1 zsh $ZDOTDIR/.zshrc
+cat <<EOF
+################################################################
+[dotfiles log]
+initializing zsh environment
+################################################################
+EOF
 
+# load env manually
+test -e $HOME/.zshenv
+. $HOME/.zshenv
+test -e $XDG_DATA_HOME/fzf/.git
+test -e $XDG_DATA_HOME/xdg-ninja/.git
+test -e $XDG_DATA_HOME/zinit/zinit.git/.git
+# init zshrc
+DOTFILES_ZSHRC_MODE=install zsh $ZDOTDIR/.zshrc
+
+cat <<EOF
+################################################################
+[dotfiles log]
+zsh environment initialized successfully
+################################################################
+EOF
 
 
 ###
 ### check zsh
 ###
-__DOTFILES_DEBUG_MODE=1 zsh -ic "$(cat <<'EOF'
-
-set -e
-
-# command -v docker
-# docker --version
-
-command -v cargo
-cargo --version
-
-command -v uv
-uv --version
-
-command -v vp
-vp --version
-
-command -v sdk
-sdk version
-
-command -v delta
-delta --version
-
-command -v abbr
-abbr --version
-
-command -v mise
-mise --version
-
+cat <<EOF
+################################################################
+[dotfiles log]
+checking zsh environment
+################################################################
 EOF
-)"
 
+DOTFILES_ZSHRC_MODE=install zsh -ic "...test"
+
+
+if [ $__dotfiles_installer_enable_test -gt 0 ]; then
+
+cat <<EOF
+################################################################
+[dotfiles log]
+checking zsh task: update
+################################################################
+EOF
+
+zsh -ic "...update"
+
+cat <<EOF
+################################################################
+[dotfiles log]
+checking zsh task: clean
+################################################################
+EOF
+
+zsh -ic "...clean"
+
+cat <<EOF
+################################################################
+[dotfiles log]
+checking reinstall zsh environment
+################################################################
+EOF
+
+DOTFILES_ZSHRC_MODE=install zsh $ZDOTDIR/.zshrc
+
+cat <<EOF
+################################################################
+[dotfiles log]
+checking zsh environment
+################################################################
+EOF
+
+DOTFILES_ZSHRC_MODE=install zsh -ic "...test"
+
+fi
+
+cat <<EOF
+################################################################
+[dotfiles log]
+zsh environment checked successfully
+################################################################
+EOF
 
 
 # exit
 set +ex
-
-echo "dotfiles installed successfully!"
 exit 0

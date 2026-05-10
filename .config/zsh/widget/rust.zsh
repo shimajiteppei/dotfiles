@@ -51,4 +51,13 @@ export PATH
 }
 
 
+##
+## test
+##
+"__dotfiles_widget-test-${__dotfiles_widget_name}"() {
+    command -v cargo
+    cargo --version
+}
+
+
 unset __dotfiles_widget_name

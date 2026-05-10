@@ -28,4 +28,13 @@ __dotfiles_widget_name=delta
 }
 
 
+##
+## test
+##
+"__dotfiles_widget-test-${__dotfiles_widget_name}"() {
+    command -v delta
+    delta --version
+}
+
+
 unset __dotfiles_widget_name

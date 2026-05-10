@@ -11,9 +11,17 @@ run = "./test.sh clear"
 description = "clear vm instance of installer test"
 
 [tasks.zsh-profile]
-run = "__DOTFILES_PROFILE_MODE=1 zsh -ic exit"
+run = "DOTFILES_ZSHRC_MODE=perf zsh -ic exit"
 description = "run zsh profiling"
+
+[tasks.zsh-debug]
+run = "DOTFILES_ZSHRC_MODE=debug zsh -ic exit"
+description = "run zsh debugging"
 
 [tasks.zsh-check-xdg-dirs]
 run = "$XDG_DATA_HOME/xdg-ninja/xdg-ninja.sh"
 description = "check XDG directories"
+
+[tasks.show-git-dirs]
+run = "git ls-tree -dr --name-only HEAD | tree --fromfile"
+description = "show directories in git repository"

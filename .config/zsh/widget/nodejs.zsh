@@ -48,4 +48,13 @@ export PATH
 }
 
 
+##
+## test
+##
+"__dotfiles_widget-test-${__dotfiles_widget_name}"() {
+    command -v vp
+    vp --version
+}
+
+
 unset __dotfiles_widget_name

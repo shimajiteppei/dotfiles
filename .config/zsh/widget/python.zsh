@@ -61,4 +61,13 @@ export PATH
 }
 
 
+##
+## test
+##
+"__dotfiles_widget-test-${__dotfiles_widget_name}"() {
+    command -v uv
+    uv --version
+}
+
+
 unset __dotfiles_widget_name

@@ -47,4 +47,13 @@ export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"
 }
 
 
+##
+## test
+##
+"__dotfiles_widget-test-${__dotfiles_widget_name}"() {
+    command -v sdk
+    sdk version
+}
+
+
 unset __dotfiles_widget_name
