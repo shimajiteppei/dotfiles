@@ -49,15 +49,23 @@
 !.config/uv
 !.config/uv/uv.toml
 
+# mise
+!.config/mise
+!.config/mise/config.toml
+
 # workspace
 !workspace/project
 !workspace/project/.gitkeep
 !workspace/tmp
 !workspace/tmp/.gitkeep
+
+# archive workspace
 !workspace/archive
-!workspace/archive/README.md
-!workspace/archive/.gitattributes
-!workspace/archive/start-archive.sh
+!workspace/archive/mise.toml
+!workspace/archive/config
+!workspace/archive/config/**
+!workspace/archive/data
+!workspace/archive/data/.gitattributes
 
 # ubuntu specific files
 !.config/systemd

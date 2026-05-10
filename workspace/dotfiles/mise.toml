@@ -1,27 +1,32 @@
-[tasks.installer-test]
-run = "./test.sh"
-description = "run installer test"
-
-[tasks.installer-test-vm-debug]
-run = "multipass exec dotfile-test -- zsh"
-description = "debug vm instance of installer test"
-
-[tasks.installer-test-vm-clear]
-run = "./test.sh clear"
-description = "clear vm instance of installer test"
-
-[tasks.zsh-profile]
-run = "DOTFILES_ZSHRC_MODE=perf zsh -ic exit"
-description = "run zsh profiling"
-
-[tasks.zsh-debug]
-run = "DOTFILES_ZSHRC_MODE=debug zsh -ic exit"
-description = "run zsh debugging"
-
-[tasks.zsh-check-xdg-dirs]
+# dotfiles
+[tasks."dotfiles:check-xdg"]
 run = "$XDG_DATA_HOME/xdg-ninja/xdg-ninja.sh"
 description = "check XDG directories"
 
-[tasks.show-git-dirs]
+[tasks."dotfiles:show-tree"]
 run = "git ls-tree -dr --name-only HEAD | tree --fromfile"
 description = "show directories in git repository"
+
+
+# zshrc
+[tasks."zshrc:perf"]
+run = "DOTFILES_ZSHRC_MODE=perf zsh -ic exit"
+description = "profile zshrc performance"
+
+[tasks."zshrc:debug"]
+run = "DOTFILES_ZSHRC_MODE=debug zsh -ic exit"
+description = "run zshrc with debug mode"
+
+
+# test
+[tasks."test:install"]
+run = "./test.sh"
+description = "create test vm and run installation test"
+
+[tasks."test:install:shell"]
+run = "multipass exec dotfile-test -- zsh"
+description = "attach test vm"
+
+[tasks."test:install:clear"]
+run = "./test.sh clear"
+description = "delete test vm"

@@ -4,6 +4,12 @@
 			"path": "../workspace/dotfiles"
 		},
 		{
+			"path": "../workspace/archive"
+		},
+		{
+			"path": "../Downloads"
+		},
+		{
 			"path": "../.config/zsh"
 		},
 		{

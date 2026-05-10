@@ -5,6 +5,6 @@ services:
     restart: always
     user: "${UID:-1000}:${GID:-1000}"
     volumes:
-      - ~/workspace/archive:/app/archive
-      - ~/workspace/dotfiles/gitwatch.entrypoint.sh:/app/gitwatch.entrypoint.sh:ro
+      - ~/workspace/archive/data:/app/archive
+      - ~/workspace/archive/config/gitwatch.entrypoint.sh:/app/gitwatch.entrypoint.sh:ro
     entrypoint: sh /app/gitwatch.entrypoint.sh

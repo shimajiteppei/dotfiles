@@ -1,0 +1,16 @@
+[tasks."archive:create"]
+usage = '''
+arg "<archive_name>" help="archive name"
+'''
+run = '''
+./config/start-archive.sh {{ usage.archive_name }}
+'''
+description = "start archive environment"
+
+[tasks."archive:watch-start"]
+run = "./config/gitwatch.sh start"
+description = "watch archive directory with gitwatch"
+
+[tasks."archive:watch-stop"]
+run = "./config/gitwatch.sh down"
+description = "stop gitwatch"

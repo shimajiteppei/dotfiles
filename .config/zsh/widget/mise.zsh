@@ -20,6 +20,7 @@ export PATH
     ##
     if ! command -v mise >/dev/null; then
         curl https://mise.run | sh
+        mise use -g usage
     fi
 
     ##
@@ -27,6 +28,7 @@ export PATH
     ##
     if command -v mise >/dev/null; then
         eval "$(mise activate zsh)"
+        eval "$(mise completion zsh)"
     fi
 }
 
