@@ -29,9 +29,9 @@ __dotfiles_widget_name=abbr
 
     alias g='git'
     # to avoid running ghostscript by type error
-    alias gs='git status --short'
+    alias gs='git status --short --ignore-submodules=all'
     # https://zsh-abbr.olets.dev/commands.html#git
-    alias 'git s'='git status --short'
+    alias 'git s'='git status --short --ignore-submodules=all'
     alias 'git ap'='git add -p'
     alias 'git b'='git branch'
     alias 'git cm'='git commit -m'
