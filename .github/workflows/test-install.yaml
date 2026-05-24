@@ -19,6 +19,45 @@ jobs:
           sudo apt install curl
           curl -fsSL https://raw.githubusercontent.com/shimajiteppei/dotfiles/refs/heads/dotfiles/workspace/dotfiles/install.sh | sh
 
+      - name: Zsh Startup Performance
+        shell: zsh --no-rcs -eo pipefail {0}
+        env:
+          TERM: xterm-256color
+        run: |
+          zmodload zsh/datetime
+
+          measure() {
+            local label="$1"
+            shift
+            local output="/tmp/zsh-startup-${label}.out"
+            local start="$EPOCHREALTIME"
+            local status=0
+
+            "$@" >| "$output" 2>&1 || status=$?
+
+            local elapsed=$(( EPOCHREALTIME - start ))
+            printf '%s wall=%.3f sec status=%d\n' "$label" "$elapsed" "$status"
+            return "$status"
+          }
+
+          {
+            print '## Zsh startup performance'
+            print
+            print '```text'
+            for i in {1..5}; do
+              measure "perf-${i}" env DOTFILES_ZSHRC_MODE=perf zsh -ic exit
+            done
+            for i in {1..5}; do
+              measure "normal-${i}" env zsh -ic exit
+            done
+            print
+            print 'zprof top:'
+            DOTFILES_ZSHRC_MODE=perf zsh -ic exit | sed -n '1,35p'
+            print '```'
+          } 2>&1 | tee /tmp/zsh-startup-performance.txt
+
+          cat /tmp/zsh-startup-performance.txt >> "$GITHUB_STEP_SUMMARY"
+
   test_macos-latest:
     runs-on: macos-latest
     steps:
@@ -30,3 +69,42 @@ jobs:
         run: |
           brew install curl
           curl -fsSL https://raw.githubusercontent.com/shimajiteppei/dotfiles/refs/heads/dotfiles/workspace/dotfiles/install.sh | sh
+
+      - name: Zsh Startup Performance
+        shell: zsh --no-rcs -eo pipefail {0}
+        env:
+          TERM: xterm-256color
+        run: |
+          zmodload zsh/datetime
+
+          measure() {
+            local label="$1"
+            shift
+            local output="/tmp/zsh-startup-${label}.out"
+            local start="$EPOCHREALTIME"
+            local status=0
+
+            "$@" >| "$output" 2>&1 || status=$?
+
+            local elapsed=$(( EPOCHREALTIME - start ))
+            printf '%s wall=%.3f sec status=%d\n' "$label" "$elapsed" "$status"
+            return "$status"
+          }
+
+          {
+            print '## Zsh startup performance'
+            print
+            print '```text'
+            for i in {1..5}; do
+              measure "perf-${i}" env DOTFILES_ZSHRC_MODE=perf zsh -ic exit
+            done
+            for i in {1..5}; do
+              measure "normal-${i}" env zsh -ic exit
+            done
+            print
+            print 'zprof top:'
+            DOTFILES_ZSHRC_MODE=perf zsh -ic exit | sed -n '1,35p'
+            print '```'
+          } 2>&1 | tee /tmp/zsh-startup-performance.txt
+
+          cat /tmp/zsh-startup-performance.txt >> "$GITHUB_STEP_SUMMARY"
