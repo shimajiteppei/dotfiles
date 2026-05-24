@@ -24,10 +24,8 @@
 # submodules
 !.local
 !.local/share
-!.local/share/xdg-ninja
 !.local/share/zinit
 !.local/share/zinit/zinit.git
-!.local/share/fzf
 
 # ssh
 !.ssh

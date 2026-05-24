@@ -83,8 +83,6 @@ EOF
 # load env manually
 test -e $HOME/.zshenv
 . $HOME/.zshenv
-test -e $XDG_DATA_HOME/fzf/.git
-test -e $XDG_DATA_HOME/xdg-ninja/.git
 test -e $XDG_DATA_HOME/zinit/zinit.git/.git
 # init zshrc
 DOTFILES_ZSHRC_MODE=install zsh $ZDOTDIR/.zshrc
