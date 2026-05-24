@@ -25,6 +25,9 @@ run_in_pty() {
     local rc=0
     local script
     local output_text
+    local chunk
+    local timeout="${ZSH_STARTUP_TIMEOUT:-10}"
+    local deadline
 
     : >| "$output"
     script="
@@ -34,11 +37,24 @@ run_in_pty() {
     "
     zpty "$pty" "TERM=${(q)${TERM:-xterm-256color}} zsh -f -c ${(qqq)script}"
 
-    zpty -r "$pty" output_text "*${marker}*__END__*" 2>/dev/null || true
+    deadline=$(( EPOCHREALTIME + timeout ))
+    while (( EPOCHREALTIME < deadline )); do
+        if zpty -r -t "$pty" chunk 2>/dev/null; then
+            output_text+="$chunk"
+            rc=$(print -rn -- "$output_text" | tr -d '\r' | sed -n "s/^${marker}\\([0-9][0-9]*\\)__END__$/\\1/p" | tail -n 1)
+            [[ -n "$rc" ]] && break
+        elif ! zpty -t "$pty" 2>/dev/null; then
+            break
+        fi
+        sleep 0.05
+    done
     zpty -d "$pty" 2>/dev/null || true
 
-    rc=$(print -rn -- "$output_text" | tr -d '\r' | sed -n "s/^${marker}\\([0-9][0-9]*\\)__END__$/\\1/p" | tail -n 1)
-    [[ -n "$rc" ]] || rc=1
+    if [[ -z "$rc" ]]; then
+        print -ru2 -- "$label timed out after ${timeout}s"
+        [[ -s "$output" ]] && tail -n 40 "$output" >&2
+        rc=124
+    fi
 
     local elapsed=$(( EPOCHREALTIME - start ))
     printf '%s  elapsed = %.3fs  status = %d\n' "$label" "$elapsed" "$rc"

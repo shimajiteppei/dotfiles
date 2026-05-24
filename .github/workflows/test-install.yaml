@@ -20,6 +20,7 @@ jobs:
           curl -fsSL https://raw.githubusercontent.com/shimajiteppei/dotfiles/refs/heads/dotfiles/workspace/dotfiles/install.sh | sh
 
       - name: Zsh Startup Performance
+        timeout-minutes: 3
         shell: sh
         env:
           TERM: xterm-256color
@@ -46,6 +47,7 @@ jobs:
           curl -fsSL https://raw.githubusercontent.com/shimajiteppei/dotfiles/refs/heads/dotfiles/workspace/dotfiles/install.sh | sh
 
       - name: Zsh Startup Performance
+        timeout-minutes: 3
         shell: sh
         env:
           TERM: xterm-256color
