@@ -46,7 +46,7 @@ setopt HIST_FCNTL_LOCK
 ## completion configuration
 ##
 autoload -Uz compinit
-zsh-defer compinit -C -d "$ZDOTDIR/.zcompdump"
+zsh-defer compinit -C -d "$__dotfiles_cache_dir/.zcompdump"
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' gain-privileges 1
 zstyle ':completion:*' rehash true
