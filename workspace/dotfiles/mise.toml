@@ -13,15 +13,32 @@ description = "show directories in git repository"
 run = '''
 zsh --no-rcs -eo pipefail <<'ZSH'
 zmodload zsh/datetime
+zmodload zsh/zpty
 
-measure() {
+run_in_pty() {
     local label="$1"
-    shift
+    local command="$2"
     local output="/tmp/zsh-startup-${label}.out"
+    local pty="zsh_startup_${label//[^A-Za-z0-9_]/_}_$$"
+    local marker="__ZSH_STARTUP_RC_${label//[^A-Za-z0-9_]/_}__="
     local start="$EPOCHREALTIME"
     local rc=0
+    local script
+    local output_text
 
-    "$@" >| "$output" 2>&1 || rc=$?
+    : >| "$output"
+    script="
+        ${command} >| ${(q)output} 2>&1
+        rc=\$?
+        print -r -- '${marker}'\$rc'__END__'
+    "
+    zpty "$pty" "TERM=${(q)${TERM:-xterm-256color}} zsh -f -c ${(qqq)script}"
+
+    zpty -r "$pty" output_text "*${marker}*__END__*" 2>/dev/null || true
+    zpty -d "$pty" 2>/dev/null || true
+
+    rc=$(print -rn -- "$output_text" | tr -d '\r' | sed -n "s/^${marker}\\([0-9][0-9]*\\)__END__$/\\1/p" | tail -n 1)
+    [[ -n "$rc" ]] || rc=1
 
     local elapsed=$(( EPOCHREALTIME - start ))
     printf '%s  elapsed = %.3fs  status = %d\n' "$label" "$elapsed" "$rc"
@@ -33,11 +50,12 @@ measure() {
     print
     print '```text'
     for i in {1..5}; do
-        measure "perf-${i}" env zsh -ic exit
+        run_in_pty "normal-${i}" "zsh -ic exit"
     done
     print
     print 'zprof top:'
-    DOTFILES_ZSHRC_MODE=perf zsh -ic exit | sed -n '1,35p'
+    run_in_pty "zprof" "DOTFILES_ZSHRC_MODE=perf zsh -ic exit" >/dev/null
+    tr -d '\r' < /tmp/zsh-startup-zprof.out | sed -n '1,35p'
     print '```'
 }
 ZSH
