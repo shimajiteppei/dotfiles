@@ -6,6 +6,7 @@ __dotfiles_core-init() {
     source "$XDG_DATA_HOME/zinit/zinit.git/zinit.zsh"
     autoload -Uz _zinit
     (( ${+_comps} )) && _comps[zinit]=_zinit
+
     zinit light-mode for \
         romkatv/powerlevel10k \
         romkatv/zsh-defer \
@@ -13,6 +14,9 @@ __dotfiles_core-init() {
         zdharma-continuum/fast-syntax-highlighting \
         zsh-users/zsh-completions \
         olets/zsh-abbr
+
+    zinit ice atclone"./install --all" atpull"%atclone" pick"bin/fzf" as"program"
+    zinit light junegunn/fzf
 
     ##
     ## load scripts
