@@ -18,6 +18,7 @@ zmodload zsh/zpty
 run_in_pty() {
     local label="$1"
     local command="$2"
+    local adjust_by="${3:-0}"
     local output="/tmp/zsh-startup-${label}.out"
     local pty="zsh_startup_${label//[^A-Za-z0-9_]/_}_$$"
     local marker="__ZSH_STARTUP_RC_${label//[^A-Za-z0-9_]/_}__="
@@ -57,21 +58,90 @@ run_in_pty() {
     fi
 
     local elapsed=$(( EPOCHREALTIME - start ))
-    printf '%s  elapsed = %.3fs  status = %d\n' "$label" "$elapsed" "$rc"
+    local adjusted=$(( elapsed - adjust_by ))
+    (( adjusted < 0 )) && adjusted=0
+    run_in_pty_elapsed="$elapsed"
+    run_in_pty_adjusted="$adjusted"
+
+    if (( adjust_by > 0 )); then
+        printf '%s  elapsed = %.3fs  adjusted = %.3fs  status = %d\n' "$label" "$elapsed" "$adjusted" "$rc"
+    else
+        printf '%s  elapsed = %.3fs  status = %d\n' "$label" "$elapsed" "$rc"
+    fi
     return "$rc"
+}
+
+average() {
+    local total=0
+    local value
+
+    for value in "$@"; do
+        total=$(( total + value ))
+    done
+
+    printf '%.3f' $(( total / $# ))
+}
+
+zprof_core_ms() {
+    awk '
+        /^[[:space:]]*[0-9]+\)/ && /__dotfiles_core-init$/ {
+            print $3
+            found = 1
+            exit
+        }
+        /^[[:space:]]*[0-9]+\)/ {
+            if ($3 + 0 > max) {
+                max = $3 + 0
+            }
+        }
+        END {
+            if (!found && max) {
+                printf "%.2f\n", max
+            }
+        }
+    ' "$1"
 }
 
 {
     print '## Zsh startup performance'
     print
     print '```text'
+    print 'zpty baseline:'
+    baseline_elapsed=()
     for i in {1..10}; do
-        run_in_pty "normal-${i}" "zsh -ic exit"
+        run_in_pty "baseline-${i}" "zsh -f -ic exit"
+        baseline_elapsed+=("$run_in_pty_elapsed")
     done
+    baseline_average="$(average "$baseline_elapsed[@]")"
+    printf 'baseline average = %.3fs\n' "$baseline_average"
     print
+
+    print 'normal startup (wall-clock, adjusted by zpty baseline):'
+    normal_elapsed=()
+    normal_adjusted=()
+    for i in {1..10}; do
+        run_in_pty "normal-${i}" "zsh -ic exit" "$baseline_average"
+        normal_elapsed+=("$run_in_pty_elapsed")
+        normal_adjusted+=("$run_in_pty_adjusted")
+    done
+    printf 'normal average = %.3fs\n' "$(average "$normal_elapsed[@]")"
+    printf 'adjusted average = %.3fs\n' "$(average "$normal_adjusted[@]")"
+    print
+
+    print 'profiled startup (zprof core total):'
+    zprof_core=()
+    for i in {1..10}; do
+        run_in_pty "zprof-${i}" "DOTFILES_ZSHRC_MODE=perf zsh -ic exit" >/dev/null
+        zprof_ms="$(zprof_core_ms "/tmp/zsh-startup-zprof-${i}.out")"
+        zprof_core+=("$zprof_ms")
+        printf 'zprof-%d  core = %.2fms\n' "$i" "$zprof_ms"
+    done
+    zprof_average_ms="$(average "$zprof_core[@]")"
+    printf 'zprof core average = %.2fms (%.3fs)\n' "$zprof_average_ms" "$(( zprof_average_ms / 1000.0 ))"
+    print
+
     print 'zprof top:'
-    run_in_pty "zprof" "DOTFILES_ZSHRC_MODE=perf zsh -ic exit" >/dev/null
-    tr -d '\r' < /tmp/zsh-startup-zprof.out | sed -n '1,35p'
+    tr -d '\r' < /tmp/zsh-startup-zprof-10.out | sed -n '1,35p'
     print '```'
 }
 ZSH
