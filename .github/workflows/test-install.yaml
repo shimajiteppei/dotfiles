@@ -26,7 +26,7 @@ jobs:
         run: |
           export PATH="$HOME/.local/bin:$PATH"
           cd "$HOME/workspace/dotfiles"
-          mise run zshrc:perf:ci 2>&1 | tee /tmp/zsh-startup-performance.txt
+          mise run zshrc:perf 2>&1 | tee /tmp/zsh-startup-performance.txt
           cat /tmp/zsh-startup-performance.txt >> "$GITHUB_STEP_SUMMARY"
 
   test_macos-latest:
@@ -48,5 +48,5 @@ jobs:
         run: |
           export PATH="$HOME/.local/bin:$PATH"
           cd "$HOME/workspace/dotfiles"
-          mise run zshrc:perf:ci 2>&1 | tee /tmp/zsh-startup-performance.txt
+          mise run zshrc:perf 2>&1 | tee /tmp/zsh-startup-performance.txt
           cat /tmp/zsh-startup-performance.txt >> "$GITHUB_STEP_SUMMARY"
