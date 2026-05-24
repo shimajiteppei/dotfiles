@@ -1,3 +1,17 @@
+__dotfiles_cache_dir="$XDG_DATA_HOME/zsh/dotfiles"
+mkdir -p "$__dotfiles_cache_dir"
+fpath=("$__dotfiles_cache_dir" $fpath)
+typeset -U fpath
+
+__dotfiles_eval-cache() {
+    local __dotfiles_command="$*"
+    local __dotfiles_cache_name="${__dotfiles_command//[^A-Za-z0-9._-]/_}"
+    local __dotfiles_cache_file="$__dotfiles_cache_dir/$__dotfiles_cache_name"
+
+    [[ -e "$__dotfiles_cache_file" ]] || eval "$@" > "$__dotfiles_cache_file"
+    eval "$(< "$__dotfiles_cache_file")"
+}
+
 __dotfiles_core-init() {
     ##
     ## init zinit
@@ -32,7 +46,7 @@ __dotfiles_core-init() {
         --preview 'echo {2..} | fold -s -w 80' \
         --preview-window=up:2 \
         "
-    source <(fzf --zsh)
+    __dotfiles_eval-cache 'fzf --zsh'
 }
 
 __dotfiles_core-update() {

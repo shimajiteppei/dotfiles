@@ -27,8 +27,8 @@ export PATH
     ## init
     ##
     if command -v mise >/dev/null; then
-        eval "$(mise activate zsh)"
-        eval "$(mise completion zsh)"
+        __dotfiles_eval-cache 'mise activate zsh'
+        __dotfiles_eval-cache 'mise completion zsh'
     fi
 }
 
