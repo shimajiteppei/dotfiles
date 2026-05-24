@@ -24,7 +24,7 @@ export PATH
     if ! command -v claude >/dev/null; then
         curl -fsSL https://claude.ai/install.sh | bash
     fi
-    if ! command v codex >/dev/null; then
+    if ! command -v codex >/dev/null; then
         npm i -g @openai/codex
     fi
 }

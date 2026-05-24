@@ -45,6 +45,8 @@ setopt HIST_FCNTL_LOCK
 ##
 ## completion configuration
 ##
+autoload -Uz compinit
+compinit
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' gain-privileges 1
 zstyle ':completion:*' rehash true

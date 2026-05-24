@@ -10,9 +10,7 @@ __dotfiles_core-init() {
     zinit light-mode for \
         romkatv/powerlevel10k \
         romkatv/zsh-defer \
-        zdharma-continuum/history-search-multi-word \
         zdharma-continuum/fast-syntax-highlighting \
-        zsh-users/zsh-completions \
         olets/zsh-abbr
 
     zinit ice atclone"./install --all" atpull"%atclone" pick"bin/fzf" as"program"
@@ -24,6 +22,16 @@ __dotfiles_core-init() {
     # do not use p10k instant prompt
     source $ZDOTDIR/core/p10k.zsh
     source $ZDOTDIR/core/tweaks.zsh
+
+    export FZF_CTRL_R_OPTS="
+        --border=rounded \
+        --layout=reverse \
+        --height=15 \
+        --prompt='history> ' \
+        --preview 'echo {2..} | fold -s -w 80' \
+        --preview-window=up:2 \
+        "
+    source <(fzf --zsh)
 }
 
 __dotfiles_core-update() {
