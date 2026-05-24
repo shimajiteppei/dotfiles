@@ -46,13 +46,13 @@ setopt HIST_FCNTL_LOCK
 ## completion configuration
 ##
 autoload -Uz compinit
-zsh-defer compinit -C -d "$__dotfiles_cache_dir/.zcompdump"
+__dotfiles_zsh-defer compinit -C -d "$__dotfiles_cache_dir/.zcompdump"
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' gain-privileges 1
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select
-__dotfiles_eval-cache 'dircolors -b'
+__dotfiles_eval-cache dircolors -b
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 

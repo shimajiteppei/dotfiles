@@ -4,12 +4,21 @@ fpath=("$__dotfiles_cache_dir" $fpath)
 typeset -U fpath
 
 __dotfiles_eval-cache() {
-    local __dotfiles_command="$*"
-    local __dotfiles_cache_name="${__dotfiles_command//[^A-Za-z0-9._-]/_}"
+    local -a __dotfiles_command=("$@")
+    local __dotfiles_cache_name="${(j:_:)__dotfiles_command}"
+    __dotfiles_cache_name="${__dotfiles_cache_name//[^A-Za-z0-9._-]/_}"
     local __dotfiles_cache_file="$__dotfiles_cache_dir/$__dotfiles_cache_name"
 
-    [[ -e "$__dotfiles_cache_file" ]] || eval "$@" > "$__dotfiles_cache_file"
-    eval "$(< "$__dotfiles_cache_file")"
+    [[ -e "$__dotfiles_cache_file" ]] || "$@" > "$__dotfiles_cache_file"
+    source "$__dotfiles_cache_file"
+}
+
+__dotfiles_zsh-defer() {
+    if [[ $__dotfiles_zshrc_enable_parallel > 0 ]]; then
+        zsh-defer "$@"
+    else
+        "$@"
+    fi
 }
 
 __dotfiles_core-init() {
@@ -46,7 +55,7 @@ __dotfiles_core-init() {
         --preview 'echo {2..} | fold -s -w 80' \
         --preview-window=up:2 \
         "
-    __dotfiles_eval-cache 'fzf --zsh'
+    __dotfiles_eval-cache fzf --zsh
 }
 
 __dotfiles_core-update() {

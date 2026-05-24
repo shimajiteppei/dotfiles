@@ -30,7 +30,7 @@ export PATH
     ## init
     ##
     if command -v uv >/dev/null; then
-        __dotfiles_eval-cache 'uv generate-shell-completion zsh'
+        __dotfiles_eval-cache uv generate-shell-completion zsh
     fi
 
     ##
