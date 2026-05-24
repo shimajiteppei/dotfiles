@@ -7,6 +7,7 @@ __dotfiles_core-init() {
     autoload -Uz _zinit
     (( ${+_comps} )) && _comps[zinit]=_zinit
 
+    export ABBR_AUTOLOAD=0
     zinit light-mode for \
         romkatv/powerlevel10k \
         romkatv/zsh-defer \

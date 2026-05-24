@@ -91,7 +91,7 @@ __dotfiles_core-init
 __dotfiles_os-init
 # defer loading widgets on interactive shell
 if [[ $__dotfiles_zshrc_enable_parallel > 0 ]]; then
-    zsh-defer __dotfiles_widget-init
+    zsh-defer -t 0.1 __dotfiles_widget-init
 else
     __dotfiles_widget-init
 fi

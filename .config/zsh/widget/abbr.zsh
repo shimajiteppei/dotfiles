@@ -5,14 +5,18 @@ __dotfiles_widget_name=abbr
 ## init
 ##
 "__dotfiles_widget-init-${__dotfiles_widget_name}"() {
-    export ABBR_AUTOLOAD=0
-
     ##
     ## init abbr
     ##
-    abbr clear-session
+    ABBR_REGULAR_SESSION_ABBREVIATIONS=( )
+    ABBR_GLOBAL_SESSION_ABBREVIATIONS=( )
     alias() {
-        abbr --session --regular --quieter --force $@
+        local definition abbreviation expansion
+        for definition in "$@"; do
+            abbreviation="${definition%%=*}"
+            expansion="${definition#*=}"
+            ABBR_REGULAR_SESSION_ABBREVIATIONS[${(qqq)abbreviation}]=${(qqq)expansion}
+        done
     }
 
 
@@ -78,9 +82,10 @@ __dotfiles_widget_name=abbr
     }
 
     if [[ -n $FAST_HIGHLIGHT ]]; then
-        for abbr in ${(f)"$(abbr list-abbreviations)"}; do
-            if [[ $abbr != *' '* ]]; then
-                register_single_word_chroma ${(Q)abbr}
+        for abbr in ${(k)ABBR_REGULAR_USER_ABBREVIATIONS} ${(k)ABBR_REGULAR_SESSION_ABBREVIATIONS}; do
+            abbr="${(Q)abbr}"
+            if [[ "$abbr" != *' '* ]]; then
+                register_single_word_chroma "$abbr"
             fi
         done
     fi
