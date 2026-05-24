@@ -157,5 +157,3 @@ fi
 
 # force return code
 return 0
-
-. "$HOME/.local/share/../bin/env"
