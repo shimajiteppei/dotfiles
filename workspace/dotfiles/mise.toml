@@ -24,7 +24,7 @@ measure() {
     "$@" >| "$output" 2>&1 || rc=$?
 
     local elapsed=$(( EPOCHREALTIME - start ))
-    printf '%s wall=%.3f sec status=%d\n' "$label" "$elapsed" "$rc"
+    printf '%s  elapsed = %.3fs  status = %d\n' "$label" "$elapsed" "$rc"
     return "$rc"
 }
 
@@ -33,10 +33,7 @@ measure() {
     print
     print '```text'
     for i in {1..5}; do
-        measure "perf-${i}" env DOTFILES_ZSHRC_MODE=perf zsh -ic exit
-    done
-    for i in {1..5}; do
-        measure "normal-${i}" env zsh -ic exit
+        measure "perf-${i}" env zsh -ic exit
     done
     print
     print 'zprof top:'

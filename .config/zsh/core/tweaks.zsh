@@ -19,7 +19,7 @@
 # history file
 mkdir -p $XDG_STATE_HOME/zsh
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
-touch $HISTFILE
+[[ -s "$HISTFILE" ]] || touch "$HISTFILE"
 HISTSIZE=1000000
 SAVEHIST=200000
 
