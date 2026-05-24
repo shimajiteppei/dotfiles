@@ -10,8 +10,42 @@ description = "show directories in git repository"
 
 # zshrc
 [tasks."zshrc:perf"]
-run = "DOTFILES_ZSHRC_MODE=perf zsh -ic exit"
-description = "profile zshrc performance"
+run = '''
+zsh --no-rcs -eo pipefail <<'ZSH'
+zmodload zsh/datetime
+
+measure() {
+    local label="$1"
+    shift
+    local output="/tmp/zsh-startup-${label}.out"
+    local start="$EPOCHREALTIME"
+    local rc=0
+
+    "$@" >| "$output" 2>&1 || rc=$?
+
+    local elapsed=$(( EPOCHREALTIME - start ))
+    printf '%s wall=%.3f sec status=%d\n' "$label" "$elapsed" "$rc"
+    return "$rc"
+}
+
+{
+    print '## Zsh startup performance'
+    print
+    print '```text'
+    for i in {1..5}; do
+        measure "perf-${i}" env DOTFILES_ZSHRC_MODE=perf zsh -ic exit
+    done
+    for i in {1..5}; do
+        measure "normal-${i}" env zsh -ic exit
+    done
+    print
+    print 'zprof top:'
+    DOTFILES_ZSHRC_MODE=perf zsh -ic exit | sed -n '1,35p'
+    print '```'
+}
+ZSH
+'''
+description = "run GitHub Actions style zsh startup performance test"
 
 [tasks."zshrc:debug"]
 run = "DOTFILES_ZSHRC_MODE=debug zsh -ic exit"
