@@ -1,0 +1,26 @@
+#!/usr/bin/env zsh
+emulate -L zsh -o err_return -o no_unset -o pipe_fail
+
+cache_home="${XDG_CACHE_HOME:-$HOME/.cache}"
+zsh_bench_dir="${ZSH_BENCH_DIR:-$cache_home/zsh-bench}"
+zsh_bin="${ZSH_BENCH_ZSH:-$(command -v zsh)}"
+iters="${ZSH_BENCH_ITERS:-16}"
+git_mode="${ZSH_BENCH_GIT:-yes}"
+login_mode="${ZSH_BENCH_LOGIN:-yes}"
+
+if [[ ! -x "$zsh_bench_dir/zsh-bench" && -d "$zsh_bench_dir/.git" ]]; then
+    git -C "$zsh_bench_dir" pull --ff-only
+fi
+
+if [[ ! -x "$zsh_bench_dir/zsh-bench" ]]; then
+    mkdir -p -- "$(dirname -- "$zsh_bench_dir")"
+    git clone --depth=1 https://github.com/romkatv/zsh-bench.git "$zsh_bench_dir"
+fi
+
+print '## Zsh performance'
+export SHELL="$zsh_bin"
+"$zsh_bench_dir/zsh-bench" \
+    --iters "$iters" \
+    --git "$git_mode" \
+    --login "$login_mode" \
+    "$@"
