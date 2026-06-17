@@ -85,7 +85,7 @@ test -e $HOME/.zshenv
 . $HOME/.zshenv
 test -e $XDG_DATA_HOME/zinit/zinit.git/.git
 # init zshrc
-DOTFILES_ZSHRC_MODE=install zsh $ZDOTDIR/.zshrc
+DOTFILES_ZSHRC_MODE=bootstrap zsh $ZDOTDIR/.zshrc
 
 cat <<EOF
 ################################################################
@@ -105,7 +105,7 @@ checking zsh environment
 ################################################################
 EOF
 
-DOTFILES_ZSHRC_MODE=install zsh -ic "...test"
+DOTFILES_ZSHRC_MODE=bootstrap zsh -ic "...test"
 
 
 if [ $__dotfiles_installer_enable_test -gt 0 ]; then
@@ -135,7 +135,7 @@ checking reinstall zsh environment
 ################################################################
 EOF
 
-DOTFILES_ZSHRC_MODE=install zsh $ZDOTDIR/.zshrc
+DOTFILES_ZSHRC_MODE=bootstrap zsh $ZDOTDIR/.zshrc
 
 cat <<EOF
 ################################################################
@@ -144,7 +144,7 @@ checking zsh environment
 ################################################################
 EOF
 
-DOTFILES_ZSHRC_MODE=install zsh -ic "...test"
+DOTFILES_ZSHRC_MODE=bootstrap zsh -ic "...test"
 
 fi
 

@@ -1,3 +1,4 @@
+DOTFILES_ZSHRC_MODE="${DOTFILES_ZSHRC_MODE:-default}"
 [[ $DOTFILES_ZSHRC_MODE = debug ]] && set -x
 
 
@@ -5,12 +6,13 @@
 ##
 ## preload scripts
 ##
-__dotfiles_zshrc_enable_parallel=1
-__dotfiles_zshrc_enable_perf=0
-__dotfiles_zshrc_enable_debug=0
-
 case "$DOTFILES_ZSHRC_MODE" in
-    install)
+    default)
+        __dotfiles_zshrc_enable_parallel=1
+        __dotfiles_zshrc_enable_perf=0
+        __dotfiles_zshrc_enable_debug=0
+        ;;
+    bootstrap)
         __dotfiles_zshrc_enable_parallel=0
         __dotfiles_zshrc_enable_perf=0
         __dotfiles_zshrc_enable_debug=0
@@ -20,7 +22,7 @@ case "$DOTFILES_ZSHRC_MODE" in
         __dotfiles_zshrc_enable_perf=0
         __dotfiles_zshrc_enable_debug=1
         ;;
-    perf)
+    profile)
         __dotfiles_zshrc_enable_parallel=1
         __dotfiles_zshrc_enable_perf=1
         __dotfiles_zshrc_enable_debug=0
