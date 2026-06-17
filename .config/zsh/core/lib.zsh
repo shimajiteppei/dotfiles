@@ -37,7 +37,7 @@ __dotfiles_core-init() {
         zdharma-continuum/fast-syntax-highlighting \
         olets/zsh-abbr
 
-    zinit ice atclone"./install --all" atpull"%atclone" pick"bin/fzf" as"program"
+    zinit ice atclone"./install --all --no-update-rc" atpull"%atclone" pick"bin/fzf" as"program"
     zinit light junegunn/fzf
 
     ##
