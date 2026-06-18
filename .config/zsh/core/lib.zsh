@@ -13,6 +13,10 @@ __dotfiles_eval-cache() {
     source "$__dotfiles_cache_file"
 }
 
+__dotfiles_rm-cache() {
+    [[ -d "$__dotfiles_cache_dir" ]] && rm -rf "$__dotfiles_cache_dir"
+}
+
 __dotfiles_zsh-defer() {
     if [[ $__dotfiles_zshrc_enable_parallel > 0 ]]; then
         zsh-defer "$@"

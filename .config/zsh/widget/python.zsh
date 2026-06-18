@@ -22,7 +22,7 @@ export PATH
     ## install
     ##
     if ! command -v uv >/dev/null; then
-        curl -LsSf https://astral.sh/uv/install.sh | sh
+        cargo binstall --no-confirm --disable-telemetry uv
         uv python install
     fi
 
@@ -47,7 +47,6 @@ export PATH
 ##
 "__dotfiles_widget-update-${__dotfiles_widget_name}"() {
     if command -v uv >/dev/null; then
-        uv self update
         uv tool upgrade --all
         uv python upgrade
     fi

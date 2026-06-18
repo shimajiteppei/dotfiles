@@ -1,11 +1,11 @@
 __dotfiles_widget_list=($__dotfiles_widget_list
     rust
     python
+    mise
+    delta
     nodejs
     java
-    delta
     abbr
-    mise
 )
 
 for widget in $__dotfiles_widget_list; do

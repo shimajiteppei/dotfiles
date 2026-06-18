@@ -118,6 +118,7 @@ EOF
 fi
 
 ...update() {
+    __dotfiles_rm-cache
     __dotfiles_os-update
     __dotfiles_core-update
     __dotfiles_widget-update
@@ -125,6 +126,7 @@ fi
 
 ...clean() {
     __dotfiles_widget-clean
+    __dotfiles_rm-cache
 }
 
 ...edit() {

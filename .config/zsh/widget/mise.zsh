@@ -19,7 +19,7 @@ export PATH
     ## install
     ##
     if ! command -v mise >/dev/null; then
-        curl https://mise.run | sh
+        cargo binstall --no-confirm --disable-telemetry mise
         mise use -g usage
     fi
 
@@ -37,9 +37,6 @@ export PATH
 ## update
 ##
 "__dotfiles_widget-update-${__dotfiles_widget_name}"() {
-    if command -v mise >/dev/null; then
-        mise self-update -y
-    fi
 }
 
 
