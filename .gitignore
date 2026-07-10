@@ -43,6 +43,10 @@
 !.config/zsh/**/
 !.config/zsh/**/*.zsh
 
+# herdr
+!.config/herdr
+!.config/herdr/config.toml
+
 # python
 !.config/uv
 !.config/uv/uv.toml

@@ -6,6 +6,7 @@ __dotfiles_widget_list=($__dotfiles_widget_list
     nodejs
     java
     abbr
+    herdr
 )
 
 for widget in $__dotfiles_widget_list; do
