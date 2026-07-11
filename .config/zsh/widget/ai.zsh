@@ -19,13 +19,13 @@ export PATH
         curl -fsSL https://ollama.com/install.sh | sh
     fi
     if ! command -v gemini >/dev/null; then
-        npm install -g @google/gemini-cli
+        vp install -g @google/gemini-cli
     fi
     if ! command -v claude >/dev/null; then
         curl -fsSL https://claude.ai/install.sh | bash
     fi
     if ! command -v codex >/dev/null; then
-        npm i -g @openai/codex
+        vp install -g @openai/codex
     fi
 }
 
