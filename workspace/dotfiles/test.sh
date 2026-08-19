@@ -16,7 +16,7 @@ case "$1" in
             multipass stop $__dotfiles_test_vm
             multipass restore --destructive $__dotfiles_test_vm.$__dotfiles_test_vm_snapshot
         else
-            multipass launch --name $__dotfiles_test_vm --cpus 4 --disk 10G --memory 4G --mount $HOME:/home/ubuntu/Home 24.04
+            multipass launch --name $__dotfiles_test_vm --cpus 4 --disk 10G --memory 4G --mount $HOME:/home/ubuntu/Home 26.04
             multipass stop $__dotfiles_test_vm
             multipass snapshot $__dotfiles_test_vm --name $__dotfiles_test_vm_snapshot
         fi    

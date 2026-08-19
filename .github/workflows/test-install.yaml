@@ -39,6 +39,34 @@ jobs:
           cat /tmp/zsh-startup-performance.txt >> "$GITHUB_STEP_SUMMARY"
           exit "$rc"
 
+  test_ubuntu-26:
+    runs-on: ubuntu-26.04
+    steps:
+      - name: Installer Test
+        timeout-minutes: 10
+        shell: sh
+        env:
+          TERM: xterm-256color
+          DOTFILES_INSTALLER_MODE: test_ci
+        run: |
+          sudo apt install curl
+          curl -fsSL https://raw.githubusercontent.com/shimajiteppei/dotfiles/refs/heads/dotfiles/workspace/dotfiles/install.sh | sh
+
+      - name: Zsh Startup Performance
+        timeout-minutes: 3
+        shell: sh
+        env:
+          TERM: xterm-256color
+        run: |
+          export PATH="$HOME/.local/bin:$PATH"
+          cd "$HOME/workspace/dotfiles"
+
+          NO_COLOR=1 mise run --quiet zshrc:perf > /tmp/zsh-startup-performance.txt 2>&1
+          rc=$?
+          cat /tmp/zsh-startup-performance.txt
+          cat /tmp/zsh-startup-performance.txt >> "$GITHUB_STEP_SUMMARY"
+          exit "$rc"
+
   test_macos-latest:
     runs-on: macos-latest
     steps:
