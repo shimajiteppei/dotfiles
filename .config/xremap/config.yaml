@@ -4,6 +4,9 @@
 # cargo install xremap --features gnome 
 # sudo gpasswd -a $USER input
 # echo 'KERNEL=="uinput", GROUP="input", TAG+="uaccess"' | sudo tee /etc/udev/rules.d/input.rules
+# sudo modprobe uinput
+# sudo udevadm control --reload-rules
+# sudo udevadm trigger
 # systemctl --user enable --now xremap
 #
 modmap:
