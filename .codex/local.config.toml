@@ -1,0 +1,22 @@
+approvals_reviewer = "auto_review"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+model_auto_compact_token_limit = 128000
+model_auto_compact_token_limit_scope = "body_after_prefix"
+tool_output_token_limit = 16000
+model = "gpt-5.6-sol"
+model_reasoning_effort = "low"
+
+[sandbox_workspace_write]
+network_access = true
+
+[tui]
+show_tooltips = false
+
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 4
+default_subagent_model = "gpt-5.6-luna"
+default_subagent_reasoning_effort = "low"
+interrupt_message = false

@@ -5,7 +5,7 @@ __dotfiles_widget_name=ai
 ## env (envs must be loaded in main thread)
 ##
 path=($path
-    $HOME/.opencode/bin
+
 )
 typeset -U path PATH
 export PATH
@@ -15,18 +15,14 @@ export PATH
 ## init
 ##
 "__dotfiles_widget-init-${__dotfiles_widget_name}"() {
-    if ! command -v ollama >/dev/null; then
-        curl -fsSL https://ollama.com/install.sh | sh
-    fi
-    if ! command -v gemini >/dev/null; then
-        vp install -g @google/gemini-cli
-    fi
     if ! command -v claude >/dev/null; then
-        curl -fsSL https://claude.ai/install.sh | bash
+        vp install -g @anthropic-ai/claude-code
     fi
+
     if ! command -v codex >/dev/null; then
         vp install -g @openai/codex
     fi
+    alias 'codex'='codex --profile local'
 }
 
 
@@ -48,12 +44,6 @@ export PATH
 ## test
 ##
 "__dotfiles_widget-test-${__dotfiles_widget_name}"() {
-    command -v ollama
-    ollama version
-
-    command -v gemini
-    gemini version
-
     command -v claude
     claude version
 

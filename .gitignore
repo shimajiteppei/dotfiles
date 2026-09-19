@@ -2,6 +2,9 @@
 
 # dotfiles
 !README.md
+!.codex
+!.codex/local.config.toml
+!.codex/AGENTS.md
 !workspace
 !workspace/dotfiles
 !workspace/dotfiles/**

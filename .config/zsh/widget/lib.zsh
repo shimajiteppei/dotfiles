@@ -7,6 +7,7 @@ __dotfiles_widget_list=($__dotfiles_widget_list
     java
     abbr
     herdr
+    ai
 )
 
 for widget in $__dotfiles_widget_list; do
