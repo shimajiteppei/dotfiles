@@ -19,7 +19,7 @@ export PATH
     ## install
     ##
     if ! command -v mise >/dev/null; then
-        cargo binstall --no-confirm --disable-telemetry mise
+        curl -fsSL https://mise.run | sh
         mise use -g usage
     fi
 
